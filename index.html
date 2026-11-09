@@ -1,475 +1,1309 @@
 <!doctype html>
-<html lang="id">
+<html lang="id" class="scroll-smooth">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#E3D2C3">
-<meta name="description" content="Portofolio Ahmad Davfa Maulana — Junior Web Programmer & UI/UX Designer lulusan Universitas Gunadarma. Profil, pengalaman, keahlian, dan studi kasus proyek Teknisi Baik.">
-<meta property="og:title" content="Ahmad Davfa Maulana — Junior Web Programmer & UI/UX Designer">
-<meta property="og:description" content="Portofolio web: profil, pengalaman, keahlian, dan studi kasus proyek Teknisi Baik.">
-<meta property="og:type" content="website">
-<title>Ahmad Davfa Maulana — Junior Web Programmer &amp; UI/UX Designer</title>
-<link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&family=IBM+Plex+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#FAF6F0">
+  <meta name="description"
+    content="Portofolio Ahmad Davfa Maulana — Junior Web Programmer & UI/UX Designer lulusan Universitas Gunadarma. Profil, pengalaman, keahlian, dan studi kasus proyek web.">
+  <meta property="og:title" content="Ahmad Davfa Maulana — Junior Web Programmer & UI/UX Designer">
+  <meta property="og:description"
+    content="Portofolio web personal: profil, keahlian teknis, pengalaman, dan studi kasus proyek e-KGB BPPP Ambon, Sistem Admin Toko & Teknisi Baik.">
+  <meta property="og:type" content="website">
+  <title>Ahmad Davfa Maulana — Junior Web Programmer &amp; UI/UX Designer</title>
+
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS v3 via CDN configured with Bespoke Warming & Dark Soft Palettes -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            paper: {
+              DEFAULT: '#FAF6F0',
+              warm: '#F5EFE6',
+              dark: '#161412',
+              darkWarm: '#1B1816',
+            },
+            surface: {
+              DEFAULT: '#FFFFFF',
+              warm: '#F3ECE2',
+              dark: '#211E1B',
+              darkWarm: '#292522',
+            },
+            ink: {
+              DEFAULT: '#241C18',
+              soft: '#5C4D44',
+              muted: '#8C7B71',
+              faint: '#B4A59B',
+              light: '#F2EBE3',
+              lightSoft: '#B8AAA0',
+              lightMuted: '#87796F',
+            },
+            terra: {
+              DEFAULT: '#BC5434',
+              dark: '#9E3E20',
+              soft: '#DE6E4E',
+            },
+            borderWarm: {
+              DEFAULT: '#E6DCD1',
+              subtle: '#EFE7DE',
+              dark: '#38322D',
+              darkSubtle: '#2C2723',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+            serif: ['Fraunces', 'Georgia', 'serif'],
+            mono: ['"IBM Plex Mono"', '"Space Mono"', 'monospace'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Bespoke Warm Styles, Tactile Cards, and Micro-interactions -->
+  <link rel="stylesheet" href="assets/css/style.css?v=2.0">
 </head>
-<body>
 
-<header class="site-header" id="top">
-  <nav class="nav-shell" aria-label="Navigasi utama">
-    <a class="brand" href="#top">
-      <img src="assets/img/logo.svg" alt="" width="36" height="36">
-      <span>Ahmad Davfa<small>Web Programmer</small></span>
-    </a>
+<body
+  class="bg-[#FAF6F0] dark:bg-[#161412] text-[#241C18] dark:text-[#F2EBE3] font-sans selection:bg-[#BC5434]/20 dark:selection:bg-[#DE6E4E]/30 selection:text-[#BC5434] dark:selection:text-[#F2EBE3] min-h-screen relative overflow-x-hidden transition-colors duration-300">
 
-    <button class="nav-toggle" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="mainNav">
-      <span></span><span></span><span></span>
+  <!-- ==================== HEADER & NAVBAR ==================== -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-[#FAF6F0]/90 dark:bg-[#161412]/90 backdrop-blur-md border-b border-[#E6DCD1] dark:border-[#38322D] transition-colors duration-300" id="top">
+    <div class="max-w-6xl mx-auto px-3 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-2">
+
+      <!-- Brand Logo -->
+      <a class="flex items-center gap-2 sm:gap-3 group shrink-0" href="#top" aria-label="Beranda Ahmad Davfa">
+        <div
+          class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] flex items-center justify-center p-1.5 transition-transform group-hover:scale-105 shadow-xs">
+          <img src="assets/img/logo.svg" alt="Logo AD" width="28" height="28" class="w-6 h-6 sm:w-7 sm:h-7">
+        </div>
+        <div class="flex flex-col">
+          <span
+            class="font-bold text-[#241C18] dark:text-[#F2EBE3] text-xs sm:text-base tracking-tight group-hover:text-[#BC5434] dark:group-hover:text-[#DE6E4E] transition-colors whitespace-nowrap">
+            Ahmad Davfa <span class="hidden xs:inline sm:inline">Maulana</span>
+          </span>
+          <span class="text-[10px] sm:text-xs text-[#8C7B71] dark:text-[#87796F] font-mono leading-none">Web Programmer</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden lg:flex items-center gap-1 xl:gap-2 text-sm font-medium text-[#5C4D44] dark:text-[#B8AAA0]">
+        <a href="#profil"
+          class="px-3 py-1.5 rounded-lg hover:text-[#241C18] dark:hover:text-[#F2EBE3] hover:bg-black/5 dark:hover:bg-white/5 transition-all">Profil</a>
+        <a href="#pengalaman"
+          class="px-3 py-1.5 rounded-lg hover:text-[#241C18] dark:hover:text-[#F2EBE3] hover:bg-black/5 dark:hover:bg-white/5 transition-all">Pengalaman</a>
+        <a href="#keahlian"
+          class="px-3 py-1.5 rounded-lg hover:text-[#241C18] dark:hover:text-[#F2EBE3] hover:bg-black/5 dark:hover:bg-white/5 transition-all">Keahlian</a>
+        <a href="#proyek"
+          class="px-3 py-1.5 rounded-lg hover:text-[#241C18] dark:hover:text-[#F2EBE3] hover:bg-black/5 dark:hover:bg-white/5 transition-all">Proyek</a>
+        <a href="#kontak"
+          class="px-3 py-1.5 rounded-lg hover:text-[#241C18] dark:hover:text-[#F2EBE3] hover:bg-black/5 dark:hover:bg-white/5 transition-all">Kontak</a>
+      </nav>
+
+      <!-- Header Actions: Real-time Live Clock & Theme Toggle Action Button -->
+      <div class="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
+        <!-- Real-Time Clock Widget -->
+        <div
+          class="flex items-center gap-1.5 px-2 sm:px-2.5 py-1 sm:py-1.5 rounded-xl bg-white/80 dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] font-mono text-[11px] sm:text-xs text-[#5C4D44] dark:text-[#B8AAA0] shadow-xs select-none"
+          title="Waktu Nyata Lokal">
+          <span class="w-2 h-2 rounded-full bg-[#10B981] animate-pulse shrink-0"></span>
+          <span id="navbar-live-clock" class="tracking-tight font-medium font-mono whitespace-nowrap">--:-- WIB</span>
+        </div>
+
+        <!-- Dark / Light Mode Action Button -->
+        <button id="theme-toggle" type="button"
+          class="tactile-btn flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl bg-white/90 dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] text-[#241C18] dark:text-[#F2EBE3] hover:bg-[#F3ECE2] dark:hover:bg-[#292522] transition-all text-xs font-semibold shadow-xs focus:outline-none"
+          aria-label="Ganti mode tema tampilan" title="Ganti Mode Terang / Gelap">
+          <!-- Sun Icon (mode gelap aktif -> klik untuk terang) -->
+          <svg id="theme-icon-sun" class="w-4 h-4 text-[#F59E0B] hidden dark:block transition-transform hover:rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+          </svg>
+          <!-- Moon Icon (mode terang aktif -> klik untuk gelap) -->
+          <svg id="theme-icon-moon" class="w-4 h-4 text-[#BC5434] block dark:hidden transition-transform hover:-rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+          </svg>
+          <span id="theme-label" class="hidden sm:inline font-mono text-[11px] sm:text-xs">Tema</span>
+        </button>
+
+        <!-- Mobile Toggle Button -->
+        <button
+          class="nav-toggle lg:hidden p-1.5 sm:p-2 rounded-xl bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] text-[#241C18] dark:text-[#F2EBE3] hover:bg-[#F3ECE2] dark:hover:bg-[#292522] focus:outline-none"
+          type="button" aria-label="Buka menu navigasi" aria-expanded="false">
+          <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav Dropdown -->
+    <div class="nav-links hidden lg:hidden flex-col gap-2 p-4 border-t border-[#E6DCD1] dark:border-[#38322D] bg-[#FAF6F0] dark:bg-[#1B1816] shadow-lg">
+      <a href="#profil" class="px-4 py-2.5 rounded-xl hover:bg-white dark:hover:bg-[#292522] text-[#241C18] dark:text-[#F2EBE3] font-medium">Profil</a>
+      <a href="#pengalaman" class="px-4 py-2.5 rounded-xl hover:bg-white dark:hover:bg-[#292522] text-[#241C18] dark:text-[#F2EBE3] font-medium">Pengalaman</a>
+      <a href="#keahlian" class="px-4 py-2.5 rounded-xl hover:bg-white dark:hover:bg-[#292522] text-[#241C18] dark:text-[#F2EBE3] font-medium">Keahlian</a>
+      <a href="#proyek" class="px-4 py-2.5 rounded-xl hover:bg-white dark:hover:bg-[#292522] text-[#241C18] dark:text-[#F2EBE3] font-medium">Proyek</a>
+      <a href="#kontak" class="px-4 py-2.5 rounded-xl hover:bg-white dark:hover:bg-[#292522] text-[#241C18] dark:text-[#F2EBE3] font-medium">Kontak &amp; Diskusi</a>
+      <a href="assets/docs/Ahmad-Davfa-Maulana-CV.pdf" download="CV-Ahmad-Davfa-Maulana.pdf"
+        class="px-4 py-2.5 rounded-xl bg-[#BC5434] dark:bg-[#DE6E4E] text-white text-center font-medium mt-1">Unduh CV (PDF)</a>
+    </div>
+  </header>
+
+  <main class="pt-24 sm:pt-28">
+
+    <!-- ==================== HERO SECTION ==================== -->
+    <section class="py-12 sm:py-20 relative bg-[#FAF6F0] dark:bg-[#161412]" id="beranda">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 w-full">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+
+          <!-- Left Content (7 cols) -->
+          <div class="lg:col-span-7 space-y-6 reveal-init">
+
+            <!-- Editorial Index Tag -->
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] text-xs font-mono text-[#8C7B71] dark:text-[#87796F] shadow-sm">
+              <span class="w-2 h-2 rounded-full bg-[#BC5434] dark:bg-[#DE6E4E] status-pulse-warm"></span>
+              <span>PORTOFOLIO WEB 2025–2026</span>
+            </div>
+
+            <!-- Main Heading -->
+            <div class="space-y-2">
+              <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[#241C18] dark:text-[#F2EBE3] leading-[1.12]">
+                Ahmad Davfa Maulana
+              </h1>
+              <p class="text-lg sm:text-xl font-medium text-[#BC5434] dark:text-[#DE6E4E]">
+                Junior Web Programmer &amp; UI/UX Designer
+              </p>
+            </div>
+
+            <!-- Lead Paragraph -->
+            <p class="text-[#5C4D44] dark:text-[#B8AAA0] text-base sm:text-lg leading-relaxed max-w-xl">
+              Menggabungkan logika pemrograman yang solid dengan perhatian terhadap estetika — menciptakan aplikasi web
+              yang responsif, mudah dipahami, dan dirancang dengan fokus pada efisiensi pengguna.
+            </p>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <a class="tactile-btn inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-semibold bg-[#BC5434] dark:bg-[#DE6E4E] text-white hover:bg-[#9E3E20] dark:hover:bg-[#C45737] transition-all shadow-sm"
+                href="#proyek">
+                <span>Lihat Studi Kasus</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </a>
+
+              <a class="tactile-btn inline-flex items-center gap-2 px-5 py-3.5 rounded-xl font-semibold bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] hover:bg-[#F3ECE2] dark:hover:bg-[#292522] text-[#241C18] dark:text-[#F2EBE3] transition-all shadow-sm"
+                id="cv-download-btn" href="assets/docs/Ahmad-Davfa-Maulana-CV.pdf"
+                download="CV-Ahmad-Davfa-Maulana.pdf">
+                <svg class="w-4 h-4 text-[#BC5434] dark:text-[#DE6E4E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                </svg>
+                <span>Unduh CV</span>
+              </a>
+
+              <button
+                class="tactile-btn inline-flex items-center gap-2 px-4 py-3.5 rounded-xl font-medium bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] hover:bg-[#F3ECE2] dark:hover:bg-[#292522] text-xs sm:text-sm text-[#5C4D44] dark:text-[#B8AAA0] hover:text-[#241C18] dark:hover:text-[#F2EBE3] transition-all shadow-sm"
+                data-copy="ahmaddavfamaulana@gmail.com" data-copy-label="Alamat Email" title="Salin Email">
+                <svg class="w-4 h-4 text-[#8C7B71] dark:text-[#87796F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                  </path>
+                </svg>
+                <span>Salin Email</span>
+              </button>
+            </div>
+
+            <!-- Key Specifications Grid (Dossier style) -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-[#E6DCD1] dark:border-[#38322D]">
+              <div class="p-3 rounded-xl bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] shadow-sm">
+                <span class="block text-xs font-mono text-[#8C7B71] dark:text-[#87796F]">Domisili</span>
+                <span class="font-medium text-xs sm:text-sm text-[#241C18] dark:text-[#F2EBE3]">Depok, Jawa Barat</span>
+              </div>
+              <div class="p-3 rounded-xl bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] shadow-sm">
+                <span class="block text-xs font-mono text-[#8C7B71] dark:text-[#87796F]">Pendidikan</span>
+                <span class="font-medium text-xs sm:text-sm text-[#241C18] dark:text-[#F2EBE3]">S1 Informatika 2025</span>
+              </div>
+              <div class="p-3 rounded-xl bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] shadow-sm">
+                <span class="block text-xs font-mono text-[#8C7B71] dark:text-[#87796F]">Kampus</span>
+                <span class="font-medium text-xs sm:text-sm text-[#241C18] dark:text-[#F2EBE3]">Univ. Gunadarma</span>
+              </div>
+              <div class="p-3 rounded-xl bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] shadow-sm">
+                <span class="block text-xs font-mono text-[#BC5434] dark:text-[#DE6E4E]">Sertifikasi</span>
+                <span class="font-medium text-xs sm:text-sm text-[#241C18] dark:text-[#F2EBE3]">LSP Web Programmer</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Photo Dossier (5 cols) -->
+          <div class="lg:col-span-5 flex justify-center lg:justify-end reveal-init">
+            <div class="warm-card p-4 rounded-3xl max-w-sm w-full space-y-3 bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] shadow-md">
+
+              <!-- Frame Header -->
+              <div
+                class="flex items-center justify-between text-xs font-mono text-[#8C7B71] dark:text-[#87796F] px-1 pb-1 border-b border-[#EFE7DE] dark:border-[#2C2723]">
+                <span class="flex items-center gap-1.5 text-[#BC5434] dark:text-[#DE6E4E]">
+                  <span class="w-2 h-2 rounded-full bg-[#BC5434] dark:bg-[#DE6E4E]"></span>
+                  PROFIL
+                </span>
+                <span>GUNADARMA</span>
+              </div>
+
+              <!-- Profile Photo -->
+              <div
+                class="rounded-2xl overflow-hidden bg-[#F3ECE2] dark:bg-[#292522] border border-[#E6DCD1] dark:border-[#38322D] aspect-[4/5] flex items-center justify-center">
+                <picture>
+                  <source srcset="assets/img/profile-ahmad-davfa.webp" type="image/webp">
+                  <img src="assets/img/profile-ahmad-davfa.png" alt="Foto Ahmad Davfa Maulana" width="411" height="544"
+                    class="w-full h-full object-cover object-top">
+                </picture>
+              </div>
+
+              <!-- Frame Footer Caption -->
+              <div class="flex items-center justify-between px-1 pt-1 text-xs">
+                <div>
+                  <p class="font-bold text-[#241C18] dark:text-[#F2EBE3]">Ahmad Davfa M.</p>
+                  <p class="text-[#8C7B71] dark:text-[#87796F] text-[11px] font-mono">S1 Informatika Gunadarma</p>
+                </div>
+                <span
+                  class="px-2.5 py-1 rounded-lg bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-[#BC5434] dark:text-[#DE6E4E] font-medium text-[11px] font-mono">
+                  LSP Terlisensi
+                </span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PROFIL SECTION ==================== -->
+    <section class="py-20 border-t border-[#E6DCD1] dark:border-[#38322D] relative bg-[#F5EFE6] dark:bg-[#1B1816]" id="profil">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+        <!-- Section Header -->
+        <div class="mb-12 reveal-init">
+          <span class="text-xs font-mono text-[#BC5434] dark:text-[#DE6E4E] uppercase tracking-wider block mb-2">[ RINGKASAN
+            PROFIL ]</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-[#241C18] dark:text-[#F2EBE3] tracking-tight">Profil &amp; Dedikasi</h2>
+          <p class="text-[#5C4D44] dark:text-[#B8AAA0] text-sm sm:text-base mt-2 max-w-2xl">Latar belakang pendidikan, filosofi pengembangan
+            web, dan akses kontak langsung.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+          <!-- Narrative (7 cols) -->
+          <div
+            class="lg:col-span-7 warm-card p-6 sm:p-8 rounded-2xl space-y-4 text-[#5C4D44] dark:text-[#B8AAA0] leading-relaxed reveal-init bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D]">
+            <p class="text-base sm:text-lg text-[#241C18] dark:text-[#F2EBE3] font-medium">
+              Saya adalah lulusan Sarjana Informatika Universitas Gunadarma dengan fokus pada rekayasa web modern serta
+              perancangan antarmuka dan pengalaman pengguna (UI/UX).
+            </p>
+            <p>
+              Bagi saya, aplikasi web yang baik harus menyeimbangkan dua pilar: keandalan logika sistem di balik layar
+              (basis data, CRUD, keamanan data) dan kejernihan antarmuka yang dirasakan pengguna (kemudahan alur,
+              navigasi responsif, tata letak rapi).
+            </p>
+            <p>
+              Terbiasa bekerja secara mandiri maupun berkolaborasi dalam tim cross-functional. Siap berkontribusi
+              membangun solusi web yang fungsional, terstruktur, dan bernilai guna tinggi.
+            </p>
+          </div>
+
+          <!-- Contact Details Card (5 cols) -->
+          <div class="lg:col-span-5 warm-card p-6 rounded-2xl space-y-4 reveal-init bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D]">
+            <h3 class="text-base font-bold text-[#241C18] dark:text-[#F2EBE3] flex items-center gap-2 border-b border-[#EFE7DE] dark:border-[#2C2723] pb-3">
+              <svg class="w-5 h-5 text-[#BC5434] dark:text-[#DE6E4E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2">
+                </path>
+              </svg>
+              <span>Data Kontak Resmi</span>
+            </h3>
+
+            <div class="space-y-3">
+              <!-- Email Row -->
+              <div class="flex items-center justify-between p-3 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D]">
+                <div>
+                  <span class="text-xs font-mono text-[#8C7B71] dark:text-[#87796F] block">Email</span>
+                  <a href="mailto:ahmaddavfa固定a@gmail.com"
+                    class="text-sm font-medium text-[#BC5434] dark:text-[#DE6E4E] hover:underline">ahmaddavfamaulana@gmail.com</a>
+                </div>
+                <button type="button"
+                  class="p-2 rounded-lg bg-white dark:bg-[#292522] hover:bg-[#F3ECE2] dark:hover:bg-[#352F2A] border border-[#E6DCD1] dark:border-[#38322D] text-[#5C4D44] dark:text-[#B8AAA0] hover:text-[#241C18] dark:hover:text-[#F2EBE3] transition-all"
+                  data-copy="ahmaddavfamaulana@gmail.com" data-copy-label="Email" title="Salin Email">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                    </path>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Phone Row -->
+              <div class="flex items-center justify-between p-3 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D]">
+                <div>
+                  <span class="text-xs font-mono text-[#8C7B71] dark:text-[#87796F] block">WhatsApp / Telepon</span>
+                  <a href="https://wa.me/6281244594564" target="_blank" rel="noopener"
+                    class="text-sm font-medium text-[#241C18] dark:text-[#F2EBE3] hover:text-[#BC5434] dark:hover:text-[#DE6E4E]">0812-4459-4564</a>
+                </div>
+                <button type="button"
+                  class="p-2 rounded-lg bg-white dark:bg-[#292522] hover:bg-[#F3ECE2] dark:hover:bg-[#352F2A] border border-[#E6DCD1] dark:border-[#38322D] text-[#5C4D44] dark:text-[#B8AAA0] hover:text-[#241C18] dark:hover:text-[#F2EBE3] transition-all"
+                  data-copy="081244594564" data-copy-label="Nomor Telepon" title="Salin Telepon">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z">
+                    </path>
+                  </svg>
+                </button>
+              </div>
+
+              <!-- Location Row -->
+              <div class="p-3 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D]">
+                <span class="text-xs font-mono text-[#8C7B71] dark:text-[#87796F] block">Domisili</span>
+                <span class="text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">Depok, Jawa Barat 16424</span>
+              </div>
+
+              <!-- Education Row -->
+              <div class="p-3 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D]">
+                <span class="text-xs font-mono text-[#8C7B71] dark:text-[#87796F] block">Pendidikan Formal</span>
+                <span class="text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">Universitas Gunadarma — S1 Informatika (2021–2025)</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PENGALAMAN SECTION ==================== -->
+    <section class="py-20 border-t border-[#E6DCD1] dark:border-[#38322D] relative bg-[#FAF6F0] dark:bg-[#161412]" id="pengalaman">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+        <!-- Section Header -->
+        <div class="mb-12 reveal-init">
+          <span class="text-xs font-mono text-[#BC5434] dark:text-[#DE6E4E] uppercase tracking-wider block mb-2">[ LOG RIWAYAT ]</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-[#241C18] dark:text-[#F2EBE3] tracking-tight">Riwayat Kerja &amp; Pelatihan</h2>
+          <p class="text-[#5C4D44] dark:text-[#B8AAA0] text-sm sm:text-base mt-2 max-w-2xl">Dua rekam jejak utama yang mematangkan logika
+            pemrograman serta kompetensi antarmuka web.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 reveal-init">
+
+          <!-- Card 1: LSP 2025 -->
+          <div class="warm-card warm-card-hover p-6 sm:p-8 rounded-2xl flex flex-col justify-between bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D]">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between border-b border-[#EFE7DE] dark:border-[#2C2723] pb-3">
+                <span
+                  class="px-3 py-1 rounded-full bg-[#BC5434]/10 dark:bg-[#DE6E4E]/15 text-[#BC5434] dark:text-[#DE6E4E] font-mono text-xs font-bold">2025</span>
+                <span class="text-xs font-mono text-[#8C7B71] dark:text-[#87796F] uppercase">Sertifikasi Okupasi</span>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-bold text-[#241C18] dark:text-[#F2EBE3]">Junior Web Programmer</h3>
+                <span class="text-sm font-medium text-[#BC5434] dark:text-[#DE6E4E]">Lembaga Sertifikasi Profesi (LSP)</span>
+              </div>
+
+              <ul class="space-y-3 text-sm text-[#5C4D44] dark:text-[#B8AAA0] pt-2">
+                <li class="flex items-start gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#BC5434] dark:bg-[#DE6E4E] shrink-0 mt-2"></span>
+                  <span>Membangun arsitektur aplikasi web dari awal (from scratch) mengintegrasikan penuh HTML5 dan CSS3
+                    untuk memastikan tampilan responsif di seluruh layar perangkat.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#BC5434] dark:bg-[#DE6E4E] shrink-0 mt-2"></span>
+                  <span>Mengimplementasikan basis data relasional MySQL serta merancang operasi CRUD (Create, Read,
+                    Update, Delete) yang aman, efisien, dan tervalidasi.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#BC5434] dark:bg-[#DE6E4E] shrink-0 mt-2"></span>
+                  <span>Menerapkan standar kompetensi kerja nasional bidang pemrograman web guna memastikan stabilitas
+                    fungsionalitas sistem.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Card 2: Gunadarma 2024 -->
+          <div class="warm-card warm-card-hover p-6 sm:p-8 rounded-2xl flex flex-col justify-between bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D]">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between border-b border-[#EFE7DE] dark:border-[#2C2723] pb-3">
+                <span
+                  class="px-3 py-1 rounded-full bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-[#241C18] dark:text-[#F2EBE3] font-mono text-xs font-bold">2024</span>
+                <span class="text-xs font-mono text-[#8C7B71] dark:text-[#87796F] uppercase">Program Studi</span>
+              </div>
+
+              <div>
+                <h3 class="text-xl font-bold text-[#241C18] dark:text-[#F2EBE3]">Pengembangan Web Application Design</h3>
+                <span class="text-sm font-medium text-[#5C4D44] dark:text-[#B8AAA0]">Universitas Gunadarma</span>
+              </div>
+
+              <ul class="space-y-3 text-sm text-[#5C4D44] dark:text-[#B8AAA0] pt-2">
+                <li class="flex items-start gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#8C7B71] dark:text-[#87796F] shrink-0 mt-2"></span>
+                  <span>Mengembangkan purwarupa aplikasi web interaktif dengan fokus berimbang pada kelancaran fungsi
+                    sistem dan kejelasan antarmuka visual.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#8C7B71] dark:text-[#87796F] shrink-0 mt-2"></span>
+                  <span>Melakukan riset pengguna dasar untuk menganalisis kebutuhan operasional serta meminimalkan
+                    friksi pengguna dalam alur tugas antarmuka.</span>
+                </li>
+                <li class="flex items-start gap-2.5">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#8C7B71] dark:text-[#87796F] shrink-0 mt-2"></span>
+                  <span>Bekerja sama dalam tim pengembang untuk menyelesaikan proyek aplikasi web tepat waktu dengan
+                    dokumentasi alur kerja yang teratur.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== KEAHLIAN SECTION ==================== -->
+    <section class="py-20 border-t border-[#E6DCD1] dark:border-[#38322D] relative bg-[#F5EFE6] dark:bg-[#1B1816]" id="keahlian">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+        <!-- Section Header -->
+        <div class="mb-12 reveal-init">
+          <span class="text-xs font-mono text-[#BC5434] dark:text-[#DE6E4E] uppercase tracking-wider block mb-2">[ KOMPONEN &amp; ALAT ]</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-[#241C18] dark:text-[#F2EBE3] tracking-tight">Keahlian &amp; Stack Teknologi</h2>
+          <p class="text-[#5C4D44] dark:text-[#B8AAA0] text-sm sm:text-base mt-2 max-w-2xl">Daftar bahasa pemrograman, basis data,
+            framework, dan alat perancangan yang saya kuasai.</p>
+        </div>
+
+        <div class="space-y-6 reveal-init">
+
+          <!-- Category 1: Pemrograman & Web -->
+          <div class="warm-card p-6 rounded-2xl space-y-3 bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D]">
+            <h3 class="text-xs font-mono text-[#BC5434] dark:text-[#DE6E4E] uppercase tracking-wider font-semibold">01 / Pemrograman &amp; Web Development</h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs sm:text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">PHP Native</span>
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs sm:text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">HTML5</span>
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs sm:text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">CSS3</span>
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-[#BC5434]/10 dark:bg-[#DE6E4E]/15 border border-[#BC5434]/30 dark:border-[#DE6E4E]/40 text-xs sm:text-sm font-medium text-[#BC5434] dark:text-[#DE6E4E]">Tailwind CSS</span>
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs sm:text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">JavaScript</span>
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs sm:text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">Node.js</span>
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs sm:text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">MySQL</span>
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs sm:text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">SQLite</span>
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs sm:text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">Sistem CRUD &amp; RBAC</span>
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs sm:text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">RESTful API</span>
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs sm:text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">Responsive Web Design</span>
+            </div>
+          </div>
+
+          <!-- Category 2: UI/UX Desain -->
+          <div class="warm-card p-6 rounded-2xl space-y-3 bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D]">
+            <h3 class="text-xs font-mono text-[#241C18] dark:text-[#F2EBE3] uppercase tracking-wider font-semibold">02 / Desain UI/UX &amp; Riset</h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs sm:text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">UI/UX Design</span>
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs sm:text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">Wireframing</span>
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs sm:text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">Interactive Prototyping</span>
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs sm:text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">User Research</span>
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs sm:text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">User-Centered Design</span>
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs sm:text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">Arsitektur Informasi</span>
+            </div>
+          </div>
+
+          <!-- Category 3: Tools & Ekosistem -->
+          <div class="warm-card p-6 rounded-2xl space-y-3 bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D]">
+            <h3 class="text-xs font-mono text-[#8C7B71] dark:text-[#87796F] uppercase tracking-wider font-semibold">03 / Tools &amp; Perangkat Kerja</h3>
+            <div class="flex flex-wrap gap-2">
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs sm:text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">Figma</span>
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs sm:text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">Git</span>
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs sm:text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">GitHub</span>
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs sm:text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">Visual Studio Code</span>
+              <span
+                class="px-3.5 py-1.5 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs sm:text-sm font-medium text-[#241C18] dark:text-[#F2EBE3]">Adobe Illustrator</span>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Two Soft-Skill Anchor Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 reveal-init">
+          <div class="warm-card p-6 rounded-2xl space-y-2 border-l-4 border-l-[#BC5434] dark:border-l-[#DE6E4E] bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D]">
+            <h4 class="font-bold text-[#241C18] dark:text-[#F2EBE3] text-base">Problem Solving &amp; Logika Analitis</h4>
+            <p class="text-sm text-[#5C4D44] dark:text-[#B8AAA0] leading-relaxed">
+              Kemampuan mendeteksi serta memperbaiki kendala teknis (debugging) secara runtut, disertai kecermatan
+              merancang alur logika program yang efisien.
+            </p>
+          </div>
+
+          <div class="warm-card p-6 rounded-2xl space-y-2 border-l-4 border-l-[#8C7B71] dark:border-l-[#87796F] bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D]">
+            <h4 class="font-bold text-[#241C18] dark:text-[#F2EBE3] text-base">Kolaborasi Tim Cross-Functional</h4>
+            <p class="text-sm text-[#5C4D44] dark:text-[#B8AAA0] leading-relaxed">
+              Mampu menjembatani komunikasi antara kebutuhan estetika antarmuka (UI/UX) dan realisasi kode teknis —
+              memastikan hasil akhir terimplementasi presisi.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== PROYEK SECTION ==================== -->
+    <section class="py-20 border-t border-[#E6DCD1] dark:border-[#38322D] relative bg-[#FAF6F0] dark:bg-[#161412]" id="proyek">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+        <!-- Header with Segmented Filter Control -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 reveal-init">
+          <div>
+            <span class="text-xs font-mono text-[#BC5434] dark:text-[#DE6E4E] uppercase tracking-wider block mb-2">[ STUDI KASUS ]</span>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-[#241C18] dark:text-[#F2EBE3] tracking-tight">Proyek Terpilih</h2>
+            <p class="text-[#5C4D44] dark:text-[#B8AAA0] text-sm sm:text-base mt-2 max-w-xl">Tiga proyek komprehensif yang mendemonstrasikan
+              implementasi sistem kedinasan, basis data relasional, logika server, integrasi AI, serta desain antarmuka pengguna.</p>
+          </div>
+
+          <!-- Tactile Filter Tabs -->
+          <div class="flex items-center gap-1.5 p-1.5 rounded-2xl bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] shadow-sm w-fit flex-wrap">
+            <button type="button"
+              class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all bg-[#241C18] dark:bg-[#F2EBE3] text-[#FAF6F0] dark:text-[#161412] shadow-sm"
+              data-filter="all">
+              Semua Proyek
+            </button>
+            <button type="button"
+              class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-[#5C4D44] dark:text-[#B8AAA0] hover:text-[#241C18] dark:hover:text-[#F2EBE3]"
+              data-filter="ekgb">
+              Sistem Kedinasan (e-KGB)
+            </button>
+            <button type="button"
+              class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-[#5C4D44] dark:text-[#B8AAA0] hover:text-[#241C18] dark:hover:text-[#F2EBE3]"
+              data-filter="admin-toko">
+              Sistem &amp; AI
+            </button>
+            <button type="button"
+              class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all text-[#5C4D44] dark:text-[#B8AAA0] hover:text-[#241C18] dark:hover:text-[#F2EBE3]"
+              data-filter="teknisi-baik">
+              Platform &amp; UI/UX
+            </button>
+          </div>
+        </div>
+
+        <div class="space-y-16">
+
+          <!-- ==================== Project 01 : e-KGB BPPP Ambon ==================== -->
+          <article class="warm-card p-6 sm:p-10 rounded-3xl space-y-8 bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] reveal-init" data-category="ekgb all">
+            <div class="flex flex-wrap items-center justify-between gap-4 border-b border-[#EFE7DE] dark:border-[#2C2723] pb-6">
+              <div>
+                <span class="text-xs font-mono text-[#BC5434] dark:text-[#DE6E4E] uppercase tracking-wider block mb-1">Project 01 // Sistem Informasi Kedinasan ASN</span>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-[#241C18] dark:text-[#F2EBE3]">e-KGB BPPP Ambon — KKP RI</h3>
+                <p class="text-sm sm:text-base text-[#5C4D44] dark:text-[#B8AAA0] mt-1">Sistem Informasi Kenaikan Gaji Berkala ASN berbasis web dengan pengingat jatuh tempo otomatis 60 hari &amp; cetak SK resmi.</p>
+              </div>
+
+              <!-- Tech Tags -->
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-lg bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs font-mono font-medium text-[#241C18] dark:text-[#F2EBE3]">PHP Native</span>
+                <span class="px-3 py-1 rounded-lg bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs font-mono font-medium text-[#241C18] dark:text-[#F2EBE3]">MySQL</span>
+                <span class="px-3 py-1 rounded-lg bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs font-mono font-medium text-[#241C18] dark:text-[#F2EBE3]">Prepared Statements</span>
+                <span class="px-3 py-1 rounded-lg bg-[#BC5434]/10 dark:bg-[#DE6E4E]/15 border border-[#BC5434]/30 dark:border-[#DE6E4E]/40 text-xs font-mono font-medium text-[#BC5434] dark:text-[#DE6E4E]">RBAC 4 Peran</span>
+                <span class="px-3 py-1 rounded-lg bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs font-mono font-medium text-[#241C18] dark:text-[#F2EBE3]">Otomasi 2 Tahun</span>
+                <span class="px-3 py-1 rounded-lg bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs font-mono font-medium text-[#241C18] dark:text-[#F2EBE3]">Cetak SK KKP</span>
+              </div>
+            </div>
+
+            <!-- Description -->
+            <p class="text-[#5C4D44] dark:text-[#B8AAA0] text-sm sm:text-base leading-relaxed">
+              Aplikasi web instansi pemerintah yang dirancang khusus untuk Balai Pelatihan dan Penyuluhan Perikanan (BPPP) Ambon di bawah Kementerian Kelautan dan Perikanan Republik Indonesia. Sistem ini menggantikan tata kelola berkas fisik kenaikan gaji berkala (KGB) yang rentan terlewat dengan mekanisme otomatisasi siklus 2 tahunan PNS/PPPK. Dilengkapi kalkulasi masa kerja golongan otomatis, verifikasi dua tahap (pengajuan admin hingga persetujuan pimpinan), pengingat ambang batas 60 hari sebelum jatuh tempo, serta generator cetak Surat Pemberitahuan Kenaikan Gaji Berkala berformat resmi kementerian.
+            </p>
+
+            <!-- 4 Alur Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div class="p-4 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] space-y-1.5">
+                <span class="text-xs font-mono text-[#BC5434] dark:text-[#DE6E4E] font-bold">Alur 01</span>
+                <h4 class="font-bold text-[#241C18] dark:text-[#F2EBE3] text-sm">Dashboard &amp; Pengingat 60 Hari</h4>
+                <p class="text-xs text-[#5C4D44] dark:text-[#B8AAA0] leading-relaxed">Penyajian ringkasan metrik pegawai, status jatuh tempo aktif, dan badge peringatan dini otomatis.</p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] space-y-1.5">
+                <span class="text-xs font-mono text-[#BC5434] dark:text-[#DE6E4E] font-bold">Alur 02</span>
+                <h4 class="font-bold text-[#241C18] dark:text-[#F2EBE3] text-sm">Data Pegawai &amp; RBAC Ketat</h4>
+                <p class="text-xs text-[#5C4D44] dark:text-[#B8AAA0] leading-relaxed">Pengelolaan NIP, pangkat, jabatan, serta enkripsi bcrypt dengan pembatasan hak akses di level server.</p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] space-y-1.5">
+                <span class="text-xs font-mono text-[#BC5434] dark:text-[#DE6E4E] font-bold">Alur 03</span>
+                <h4 class="font-bold text-[#241C18] dark:text-[#F2EBE3] text-sm">Pencatatan &amp; Persetujuan 2 Tahap</h4>
+                <p class="text-xs text-[#5C4D44] dark:text-[#B8AAA0] leading-relaxed">Kalkulasi TMT + 2 tahun otomatis, pengajuan draf usulan gaji baru, dan validasi otoritas pimpinan.</p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] space-y-1.5">
+                <span class="text-xs font-mono text-[#BC5434] dark:text-[#DE6E4E] font-bold">Alur 04</span>
+                <h4 class="font-bold text-[#241C18] dark:text-[#F2EBE3] text-sm">Cetak SK &amp; Laporan Keuangan</h4>
+                <p class="text-xs text-[#5C4D44] dark:text-[#B8AAA0] leading-relaxed">Pencetakan surat keputusan berkop resmi instansi dan rekapitulasi proyeksi beban gaji bagi divisi keuangan.</p>
+              </div>
+            </div>
+
+            <!-- Action Link to GitHub Repository -->
+            <div class="flex flex-wrap items-center justify-between gap-3 p-4 rounded-2xl bg-[#F5EFE6] dark:bg-[#292522] border border-[#E6DCD1] dark:border-[#38322D]">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] flex items-center justify-center text-[#241C18] dark:text-[#F2EBE3] shrink-0">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+                  </svg>
+                </div>
+                <div>
+                  <h5 class="text-sm font-bold text-[#241C18] dark:text-[#F2EBE3]">Repositori Kode Sumber Terbuka</h5>
+                  <p class="text-xs text-[#5C4D44] dark:text-[#B8AAA0]">github.com/davfaki/e_KGB_BPPP · PHP, MySQL, RBAC Architecture</p>
+                </div>
+              </div>
+              <a href="https://github.com/davfaki/e_KGB_BPPP" target="_blank" rel="noopener noreferrer"
+                class="tactile-btn inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-[#241C18] dark:bg-[#F2EBE3] text-white dark:text-[#161412] hover:bg-[#BC5434] dark:hover:bg-[#DE6E4E] dark:hover:text-white transition-all text-xs font-semibold shadow-xs">
+                <span>Buka GitHub Repo</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                </svg>
+              </a>
+            </div>
+
+            <!-- Horizontal Reel Screenshot Gallery -->
+            <div class="reel-wrap space-y-3 pt-2">
+              <div class="flex items-center justify-between text-xs font-mono text-[#8C7B71] dark:text-[#87796F]">
+                <span>Klik gambar untuk memperbesar layar (Lightbox)</span>
+                <div class="reel-arrows flex items-center gap-1.5">
+                  <button type="button" data-dir="-1"
+                    class="p-1.5 rounded-lg bg-white dark:bg-[#292522] hover:bg-[#F3ECE2] dark:hover:bg-[#352F2A] border border-[#E6DCD1] dark:border-[#38322D] text-[#241C18] dark:text-[#F2EBE3] transition-all"
+                    aria-label="Sebelumnya">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                  </button>
+                  <button type="button" data-dir="1"
+                    class="p-1.5 rounded-lg bg-white dark:bg-[#292522] hover:bg-[#F3ECE2] dark:hover:bg-[#352F2A] border border-[#E6DCD1] dark:border-[#38322D] text-[#241C18] dark:text-[#F2EBE3] transition-all"
+                    aria-label="Berikutnya">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Reel Container -->
+              <div class="reel-container">
+                <button
+                  class="reel-card w-72 sm:w-80 rounded-2xl overflow-hidden bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] group text-left shadow-sm"
+                  type="button" data-full="assets/img/projects/ekgb-image-4-1.jpg"
+                  data-title="Halaman Masuk Sistem &amp; Autentikasi Multi-Peran">
+                  <div class="aspect-video bg-[#F3ECE2] dark:bg-[#292522] overflow-hidden">
+                    <img src="assets/img/projects/ekgb-image-4-1.jpg" alt="Login Sistem e-KGB"
+                      loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                  </div>
+                  <div class="p-3 bg-white dark:bg-[#211E1B] flex items-center justify-between text-xs border-t border-[#E6DCD1] dark:border-[#38322D]">
+                    <span class="font-mono text-[#BC5434] dark:text-[#DE6E4E] font-bold">Frame_01</span>
+                    <span class="text-[#241C18] dark:text-[#F2EBE3] font-medium truncate ml-2">Login Multi-Peran</span>
+                  </div>
+                </button>
+
+                <button
+                  class="reel-card w-72 sm:w-80 rounded-2xl overflow-hidden bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] group text-left shadow-sm"
+                  type="button" data-full="assets/img/projects/ekgb-image-5-1.jpg"
+                  data-title="Dashboard Utama &amp; Indikator Peringatan 60 Hari">
+                  <div class="aspect-video bg-[#F3ECE2] dark:bg-[#292522] overflow-hidden">
+                    <img src="assets/img/projects/ekgb-image-5-1.jpg" alt="Dashboard Utama e-KGB"
+                      loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                  </div>
+                  <div class="p-3 bg-white dark:bg-[#211E1B] flex items-center justify-between text-xs border-t border-[#E6DCD1] dark:border-[#38322D]">
+                    <span class="font-mono text-[#BC5434] dark:text-[#DE6E4E] font-bold">Frame_02</span>
+                    <span class="text-[#241C18] dark:text-[#F2EBE3] font-medium truncate ml-2">Dashboard Ringkasan</span>
+                  </div>
+                </button>
+
+                <button
+                  class="reel-card w-72 sm:w-80 rounded-2xl overflow-hidden bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] group text-left shadow-sm"
+                  type="button" data-full="assets/img/projects/ekgb-image-6-1.jpg"
+                  data-title="Modul Manajemen Data Induk Pegawai">
+                  <div class="aspect-video bg-[#F3ECE2] dark:bg-[#292522] overflow-hidden">
+                    <img src="assets/img/projects/ekgb-image-6-1.jpg" alt="Data Induk Pegawai e-KGB"
+                      loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                  </div>
+                  <div class="p-3 bg-white dark:bg-[#211E1B] flex items-center justify-between text-xs border-t border-[#E6DCD1] dark:border-[#38322D]">
+                    <span class="font-mono text-[#BC5434] dark:text-[#DE6E4E] font-bold">Frame_03</span>
+                    <span class="text-[#241C18] dark:text-[#F2EBE3] font-medium truncate ml-2">Data Pegawai</span>
+                  </div>
+                </button>
+
+                <button
+                  class="reel-card w-72 sm:w-80 rounded-2xl overflow-hidden bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] group text-left shadow-sm"
+                  type="button" data-full="assets/img/projects/ekgb-image-6-2.jpg"
+                  data-title="Tabel Riwayat &amp; Pemantauan Proses KGB">
+                  <div class="aspect-video bg-[#F3ECE2] dark:bg-[#292522] overflow-hidden">
+                    <img src="assets/img/projects/ekgb-image-6-2.jpg" alt="Riwayat dan Proses KGB"
+                      loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                  </div>
+                  <div class="p-3 bg-white dark:bg-[#211E1B] flex items-center justify-between text-xs border-t border-[#E6DCD1] dark:border-[#38322D]">
+                    <span class="font-mono text-[#BC5434] dark:text-[#DE6E4E] font-bold">Frame_04</span>
+                    <span class="text-[#241C18] dark:text-[#F2EBE3] font-medium truncate ml-2">Riwayat KGB</span>
+                  </div>
+                </button>
+
+                <button
+                  class="reel-card w-72 sm:w-80 rounded-2xl overflow-hidden bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] group text-left shadow-sm"
+                  type="button" data-full="assets/img/projects/ekgb-image-7-1.jpg"
+                  data-title="Formulir Pengajuan &amp; Validasi SK KGB">
+                  <div class="aspect-video bg-[#F3ECE2] dark:bg-[#292522] overflow-hidden">
+                    <img src="assets/img/projects/ekgb-image-7-1.jpg" alt="Pengajuan SK KGB"
+                      loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                  </div>
+                  <div class="p-3 bg-white dark:bg-[#211E1B] flex items-center justify-between text-xs border-t border-[#E6DCD1] dark:border-[#38322D]">
+                    <span class="font-mono text-[#BC5434] dark:text-[#DE6E4E] font-bold">Frame_05</span>
+                    <span class="text-[#241C18] dark:text-[#F2EBE3] font-medium truncate ml-2">Pengajuan SK</span>
+                  </div>
+                </button>
+
+                <button
+                  class="reel-card w-72 sm:w-80 rounded-2xl overflow-hidden bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] group text-left shadow-sm"
+                  type="button" data-full="assets/img/projects/ekgb-image-7-2.jpg"
+                  data-title="Panel Persetujuan &amp; Otorisasi Pimpinan">
+                  <div class="aspect-video bg-[#F3ECE2] dark:bg-[#292522] overflow-hidden">
+                    <img src="assets/img/projects/ekgb-image-7-2.jpg" alt="Persetujuan Pimpinan"
+                      loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                  </div>
+                  <div class="p-3 bg-white dark:bg-[#211E1B] flex items-center justify-between text-xs border-t border-[#E6DCD1] dark:border-[#38322D]">
+                    <span class="font-mono text-[#BC5434] dark:text-[#DE6E4E] font-bold">Frame_06</span>
+                    <span class="text-[#241C18] dark:text-[#F2EBE3] font-medium truncate ml-2">Persetujuan Pimpinan</span>
+                  </div>
+                </button>
+
+                <button
+                  class="reel-card w-72 sm:w-80 rounded-2xl overflow-hidden bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] group text-left shadow-sm"
+                  type="button" data-full="assets/img/projects/ekgb-image-8-1.jpg"
+                  data-title="Format Cetak Surat Keputusan KGB Resmi KKP">
+                  <div class="aspect-video bg-[#F3ECE2] dark:bg-[#292522] overflow-hidden">
+                    <img src="assets/img/projects/ekgb-image-8-1.jpg" alt="Cetak SK KGB Resmi"
+                      loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                  </div>
+                  <div class="p-3 bg-white dark:bg-[#211E1B] flex items-center justify-between text-xs border-t border-[#E6DCD1] dark:border-[#38322D]">
+                    <span class="font-mono text-[#BC5434] dark:text-[#DE6E4E] font-bold">Frame_07</span>
+                    <span class="text-[#241C18] dark:text-[#F2EBE3] font-medium truncate ml-2">Cetak Dokumen SK</span>
+                  </div>
+                </button>
+
+                <button
+                  class="reel-card w-72 sm:w-80 rounded-2xl overflow-hidden bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] group text-left shadow-sm"
+                  type="button" data-full="assets/img/projects/ekgb-image-8-2.jpg"
+                  data-title="Laporan Keuangan &amp; Rekapitulasi Beban Gaji">
+                  <div class="aspect-video bg-[#F3ECE2] dark:bg-[#292522] overflow-hidden">
+                    <img src="assets/img/projects/ekgb-image-8-2.jpg" alt="Laporan Keuangan e-KGB"
+                      loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                  </div>
+                  <div class="p-3 bg-white dark:bg-[#211E1B] flex items-center justify-between text-xs border-t border-[#E6DCD1] dark:border-[#38322D]">
+                    <span class="font-mono text-[#BC5434] dark:text-[#DE6E4E] font-bold">Frame_08</span>
+                    <span class="text-[#241C18] dark:text-[#F2EBE3] font-medium truncate ml-2">Laporan Anggaran</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ==================== Project 02 : Admin Pembelian & Stock Toko ==================== -->
+          <article class="warm-card p-6 sm:p-10 rounded-3xl space-y-8 bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] reveal-init" data-category="admin-toko all">
+            <div class="flex flex-wrap items-center justify-between gap-4 border-b border-[#EFE7DE] dark:border-[#2C2723] pb-6">
+              <div>
+                <span class="text-xs font-mono text-[#BC5434] dark:text-[#DE6E4E] uppercase tracking-wider block mb-1">Project 02 // Solusi Internal</span>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-[#241C18] dark:text-[#F2EBE3]">Sistem Admin Pembelian &amp; Stock Toko</h3>
+                <p class="text-sm sm:text-base text-[#5C4D44] dark:text-[#B8AAA0] mt-1">Dashboard manajemen inventaris dengan asisten Chatbot AI berbasis data riil.</p>
+              </div>
+
+              <!-- Tech Tags -->
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1 rounded-lg bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs font-mono font-medium text-[#241C18] dark:text-[#F2EBE3]">Node.js</span>
+                <span
+                  class="px-3 py-1 rounded-lg bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs font-mono font-medium text-[#241C18] dark:text-[#F2EBE3]">Express</span>
+                <span
+                  class="px-3 py-1 rounded-lg bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs font-mono font-medium text-[#241C18] dark:text-[#F2EBE3]">EJS</span>
+                <span
+                  class="px-3 py-1 rounded-lg bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs font-mono font-medium text-[#241C18] dark:text-[#F2EBE3]">SQLite</span>
+                <span
+                  class="px-3 py-1 rounded-lg bg-[#BC5434]/10 dark:bg-[#DE6E4E]/15 border border-[#BC5434]/30 dark:border-[#DE6E4E]/40 text-xs font-mono font-medium text-[#BC5434] dark:text-[#DE6E4E]">Chatbot AI</span>
+                <span
+                  class="px-3 py-1 rounded-lg bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs font-mono font-medium text-[#241C18] dark:text-[#F2EBE3]">REST API</span>
+              </div>
+            </div>
+
+            <!-- Description -->
+            <p class="text-[#5C4D44] dark:text-[#B8AAA0] text-sm sm:text-base leading-relaxed">
+              Aplikasi web internal untuk mencatat pembelian (restock) barang dari supplier, membatalkan transaksi yang
+              salah input, dan memantau persediaan stock secara terpusat. Dilengkapi asisten chatbot cerdas yang membaca
+              kondisi stock riil toko, sehingga dapat menjawab pertanyaan kritis seperti <em>"produk apa yang stocknya
+                menipis?"</em> dengan akurat sesuai data toko.
+            </p>
+
+            <!-- 4 Alur Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div class="p-4 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] space-y-1.5">
+                <span class="text-xs font-mono text-[#BC5434] dark:text-[#DE6E4E] font-bold">Alur 01</span>
+                <h4 class="font-bold text-[#241C18] dark:text-[#F2EBE3] text-sm">Dashboard Ringkasan</h4>
+                <p class="text-xs text-[#5C4D44] dark:text-[#B8AAA0] leading-relaxed">Total produk, total stock, nilai pembelian aktif, dan
+                  warning stock menipis dalam satu pandangan.</p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] space-y-1.5">
+                <span class="text-xs font-mono text-[#BC5434] dark:text-[#DE6E4E] font-bold">Alur 02</span>
+                <h4 class="font-bold text-[#241C18] dark:text-[#F2EBE3] text-sm">Input &amp; Batal Pembelian</h4>
+                <p class="text-xs text-[#5C4D44] dark:text-[#B8AAA0] leading-relaxed">Stock bertambah otomatis saat pembelian tersimpan, dan
+                  dikembalikan otomatis bila dibatalkan.</p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] space-y-1.5">
+                <span class="text-xs font-mono text-[#BC5434] dark:text-[#DE6E4E] font-bold">Alur 03</span>
+                <h4 class="font-bold text-[#241C18] dark:text-[#F2EBE3] text-sm">Pemantauan Stock</h4>
+                <p class="text-xs text-[#5C4D44] dark:text-[#B8AAA0] leading-relaxed">Status "Aman" atau "Menipis" secara terotomasi
+                  berdasarkan batas minimum masing-masing produk.</p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] space-y-1.5">
+                <span class="text-xs font-mono text-[#BC5434] dark:text-[#DE6E4E] font-bold">Alur 04</span>
+                <h4 class="font-bold text-[#241C18] dark:text-[#F2EBE3] text-sm">Chatbot Asisten AI</h4>
+                <p class="text-xs text-[#5C4D44] dark:text-[#B8AAA0] leading-relaxed">Tanya-jawab kondisi persediaan dijawab langsung dengan
+                  konteks data toko yang sesungguhnya.</p>
+              </div>
+            </div>
+
+            <!-- Horizontal Reel Screenshot Gallery -->
+            <div class="reel-wrap space-y-3 pt-2">
+              <div class="flex items-center justify-between text-xs font-mono text-[#8C7B71] dark:text-[#87796F]">
+                <span>Klik gambar untuk memperbesar layar (Lightbox)</span>
+                <div class="reel-arrows flex items-center gap-1.5">
+                  <button type="button" data-dir="-1"
+                    class="p-1.5 rounded-lg bg-white dark:bg-[#292522] hover:bg-[#F3ECE2] dark:hover:bg-[#352F2A] border border-[#E6DCD1] dark:border-[#38322D] text-[#241C18] dark:text-[#F2EBE3] transition-all"
+                    aria-label="Sebelumnya">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                  </button>
+                  <button type="button" data-dir="1"
+                    class="p-1.5 rounded-lg bg-white dark:bg-[#292522] hover:bg-[#F3ECE2] dark:hover:bg-[#352F2A] border border-[#E6DCD1] dark:border-[#38322D] text-[#241C18] dark:text-[#F2EBE3] transition-all"
+                    aria-label="Berikutnya">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Reel Container -->
+              <div class="reel-container">
+                <button
+                  class="reel-card w-72 sm:w-80 rounded-2xl overflow-hidden bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] group text-left shadow-sm"
+                  type="button" data-full="assets/img/projects/admintoko-dashboard.webp"
+                  data-title="Dashboard Admin Toko">
+                  <div class="aspect-video bg-[#F3ECE2] dark:bg-[#292522] overflow-hidden">
+                    <img src="assets/img/projects/admintoko-dashboard-thumb.webp" alt="Dashboard admin toko"
+                      loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                  </div>
+                  <div class="p-3 bg-white dark:bg-[#211E1B] flex items-center justify-between text-xs border-t border-[#E6DCD1] dark:border-[#38322D]">
+                    <span class="font-mono text-[#BC5434] dark:text-[#DE6E4E] font-bold">Frame_09</span>
+                    <span class="text-[#241C18] dark:text-[#F2EBE3] font-medium">Dashboard Ringkasan</span>
+                  </div>
+                </button>
+
+                <button
+                  class="reel-card w-72 sm:w-80 rounded-2xl overflow-hidden bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] group text-left shadow-sm"
+                  type="button" data-full="assets/img/projects/admintoko-pembelian.webp" data-title="Data Pembelian">
+                  <div class="aspect-video bg-[#F3ECE2] dark:bg-[#292522] overflow-hidden">
+                    <img src="assets/img/projects/admintoko-pembelian-thumb.webp" alt="Data pembelian" loading="lazy"
+                      class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                  </div>
+                  <div class="p-3 bg-white dark:bg-[#211E1B] flex items-center justify-between text-xs border-t border-[#E6DCD1] dark:border-[#38322D]">
+                    <span class="font-mono text-[#BC5434] dark:text-[#DE6E4E] font-bold">Frame_10</span>
+                    <span class="text-[#241C18] dark:text-[#F2EBE3] font-medium">Data Pembelian</span>
+                  </div>
+                </button>
+
+                <button
+                  class="reel-card w-72 sm:w-80 rounded-2xl overflow-hidden bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] group text-left shadow-sm"
+                  type="button" data-full="assets/img/projects/admintoko-stock.webp" data-title="Stock Produk">
+                  <div class="aspect-video bg-[#F3ECE2] dark:bg-[#292522] overflow-hidden">
+                    <img src="assets/img/projects/admintoko-stock-thumb.webp" alt="Stock produk" loading="lazy"
+                      class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                  </div>
+                  <div class="p-3 bg-white dark:bg-[#211E1B] flex items-center justify-between text-xs border-t border-[#E6DCD1] dark:border-[#38322D]">
+                    <span class="font-mono text-[#BC5434] dark:text-[#DE6E4E] font-bold">Frame_11</span>
+                    <span class="text-[#241C18] dark:text-[#F2EBE3] font-medium">Stock Produk</span>
+                  </div>
+                </button>
+
+                <button
+                  class="reel-card w-72 sm:w-80 rounded-2xl overflow-hidden bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] group text-left shadow-sm"
+                  type="button" data-full="assets/img/projects/admintoko-chatbot.webp"
+                  data-title="Chatbot Asisten Toko">
+                  <div class="aspect-video bg-[#F3ECE2] dark:bg-[#292522] overflow-hidden">
+                    <img src="assets/img/projects/admintoko-chatbot-thumb.webp" alt="Chatbot asisten toko"
+                      loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                  </div>
+                  <div class="p-3 bg-white dark:bg-[#211E1B] flex items-center justify-between text-xs border-t border-[#E6DCD1] dark:border-[#38322D]">
+                    <span class="font-mono text-[#BC5434] dark:text-[#DE6E4E] font-bold">Frame_12</span>
+                    <span class="text-[#241C18] dark:text-[#F2EBE3] font-medium">Chatbot AI</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- ==================== Project 03 : Teknisi Baik ==================== -->
+          <article class="warm-card p-6 sm:p-10 rounded-3xl space-y-8 bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] reveal-init" data-category="teknisi-baik all">
+            <div class="flex flex-wrap items-center justify-between gap-4 border-b border-[#EFE7DE] dark:border-[#2C2723] pb-6">
+              <div>
+                <span class="text-xs font-mono text-[#241C18] dark:text-[#F2EBE3] uppercase tracking-wider block mb-1">Studi Kasus 03 // Platform Kolaboratif</span>
+                <h3 class="text-2xl sm:text-3xl font-extrabold text-[#241C18] dark:text-[#F2EBE3]">Teknisi Baik</h3>
+                <p class="text-sm sm:text-base text-[#5C4D44] dark:text-[#B8AAA0] mt-1">Platform reservasi servis kendaraan, elektronik, &amp; perabotan rumah tangga.</p>
+              </div>
+
+              <!-- Tech Tags -->
+              <div class="flex flex-wrap gap-2">
+                <span
+                  class="px-3 py-1 rounded-lg bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs font-mono font-medium text-[#241C18] dark:text-[#F2EBE3]">PHP</span>
+                <span
+                  class="px-3 py-1 rounded-lg bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs font-mono font-medium text-[#241C18] dark:text-[#F2EBE3]">MySQL</span>
+                <span
+                  class="px-3 py-1 rounded-lg bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs font-mono font-medium text-[#241C18] dark:text-[#F2EBE3]">HTML5 &amp; CSS3</span>
+                <span
+                  class="px-3 py-1 rounded-lg bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs font-mono font-medium text-[#241C18] dark:text-[#F2EBE3]">Bootstrap</span>
+                <span
+                  class="px-3 py-1 rounded-lg bg-[#BC5434]/10 dark:bg-[#DE6E4E]/15 border border-[#BC5434]/30 dark:border-[#DE6E4E]/40 text-xs font-mono font-medium text-[#BC5434] dark:text-[#DE6E4E]">CRUD Penuh</span>
+                <span
+                  class="px-3 py-1 rounded-lg bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] text-xs font-mono font-medium text-[#241C18] dark:text-[#F2EBE3]">Role Pengguna</span>
+              </div>
+            </div>
+
+            <!-- Description -->
+            <p class="text-[#5C4D44] dark:text-[#B8AAA0] text-sm sm:text-base leading-relaxed">
+              Tugas akhir mata kuliah Web Programming yang dikerjakan berkelompok (5 anggota). Platform ini
+              mempertemukan pelanggan dengan teknisi ahli. Pelanggan memilih jenis servis dan mengisi formulir order;
+              teknisi menerima, memproses, atau membatalkan order dari dashboard khusus mereka. Kontribusi utama saya
+              difokuskan pada riset pengguna, arsitektur alur, dan purwarupa antarmuka (UI).
+            </p>
+
+            <!-- 4 Alur Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div class="p-4 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] space-y-1.5">
+                <span class="text-xs font-mono text-[#241C18] dark:text-[#F2EBE3] font-bold">Alur 01</span>
+                <h4 class="font-bold text-[#241C18] dark:text-[#F2EBE3] text-sm">Landing Page</h4>
+                <p class="text-xs text-[#5C4D44] dark:text-[#B8AAA0] leading-relaxed">Pengenalan komprehensif layanan servis, keuntungan,
+                  dan panduan pemesanan yang jelas.</p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] space-y-1.5">
+                <span class="text-xs font-mono text-[#241C18] dark:text-[#F2EBE3] font-bold">Alur 02</span>
+                <h4 class="font-bold text-[#241C18] dark:text-[#F2EBE3] text-sm">Pilih Layanan &amp; Order</h4>
+                <p class="text-xs text-[#5C4D44] dark:text-[#B8AAA0] leading-relaxed">Formulir pemilihan kategori, deskripsi kendala barang,
+                  dan jadwal kedatangan teknisi.</p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] space-y-1.5">
+                <span class="text-xs font-mono text-[#241C18] dark:text-[#F2EBE3] font-bold">Alur 03</span>
+                <h4 class="font-bold text-[#241C18] dark:text-[#F2EBE3] text-sm">Dashboard Teknisi</h4>
+                <p class="text-xs text-[#5C4D44] dark:text-[#B8AAA0] leading-relaxed">Manajemen order masuk, status pengerjaan, pelacakan
+                  rincian, dan update penyelesaian servis.</p>
+              </div>
+
+              <div class="p-4 rounded-xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] space-y-1.5">
+                <span class="text-xs font-mono text-[#241C18] dark:text-[#F2EBE3] font-bold">Alur 04</span>
+                <h4 class="font-bold text-[#241C18] dark:text-[#F2EBE3] text-sm">CRUD Tipe Perbaikan</h4>
+                <p class="text-xs text-[#5C4D44] dark:text-[#B8AAA0] leading-relaxed">Panel admin untuk menambah, menyunting biaya dasar,
+                  dan ikon kategori perbaikan.</p>
+              </div>
+            </div>
+
+            <!-- Horizontal Reel Screenshot Gallery -->
+            <div class="reel-wrap space-y-3 pt-2">
+              <div class="flex items-center justify-between text-xs font-mono text-[#8C7B71] dark:text-[#87796F]">
+                <span>Klik gambar untuk memperbesar layar (Lightbox)</span>
+                <div class="reel-arrows flex items-center gap-1.5">
+                  <button type="button" data-dir="-1"
+                    class="p-1.5 rounded-lg bg-white dark:bg-[#292522] hover:bg-[#F3ECE2] dark:hover:bg-[#352F2A] border border-[#E6DCD1] dark:border-[#38322D] text-[#241C18] dark:text-[#F2EBE3] transition-all"
+                    aria-label="Sebelumnya">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                    </svg>
+                  </button>
+                  <button type="button" data-dir="1"
+                    class="p-1.5 rounded-lg bg-white dark:bg-[#292522] hover:bg-[#F3ECE2] dark:hover:bg-[#352F2A] border border-[#E6DCD1] dark:border-[#38322D] text-[#241C18] dark:text-[#F2EBE3] transition-all"
+                    aria-label="Berikutnya">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Reel Container -->
+              <div class="reel-container">
+                <button
+                  class="reel-card w-72 sm:w-80 rounded-2xl overflow-hidden bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] group text-left shadow-sm"
+                  type="button" data-full="assets/img/projects/teknisi-baik-landing.webp"
+                  data-title="Landing Page Teknisi Baik">
+                  <div class="aspect-video bg-[#F3ECE2] dark:bg-[#292522] overflow-hidden">
+                    <img src="assets/img/projects/teknisi-baik-landing-thumb.webp" alt="Landing page Teknisi Baik"
+                      loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                  </div>
+                  <div class="p-3 bg-white dark:bg-[#211E1B] flex items-center justify-between text-xs border-t border-[#E6DCD1] dark:border-[#38322D]">
+                    <span class="font-mono text-[#241C18] dark:text-[#F2EBE3] font-bold">Frame_13</span>
+                    <span class="text-[#241C18] dark:text-[#F2EBE3] font-medium">Landing Page</span>
+                  </div>
+                </button>
+
+                <button
+                  class="reel-card w-72 sm:w-80 rounded-2xl overflow-hidden bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] group text-left shadow-sm"
+                  type="button" data-full="assets/img/projects/teknisi-baik-pilih-layanan.webp"
+                  data-title="Pemilihan Jenis Perbaikan">
+                  <div class="aspect-video bg-[#F3ECE2] dark:bg-[#292522] overflow-hidden">
+                    <img src="assets/img/projects/teknisi-baik-pilih-layanan-thumb.webp"
+                      alt="Halaman pilih jenis perbaikan" loading="lazy"
+                      class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                  </div>
+                  <div class="p-3 bg-white dark:bg-[#211E1B] flex items-center justify-between text-xs border-t border-[#E6DCD1] dark:border-[#38322D]">
+                    <span class="font-mono text-[#241C18] dark:text-[#F2EBE3] font-bold">Frame_14</span>
+                    <span class="text-[#241C18] dark:text-[#F2EBE3] font-medium">Pilih Layanan</span>
+                  </div>
+                </button>
+
+                <button
+                  class="reel-card w-72 sm:w-80 rounded-2xl overflow-hidden bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] group text-left shadow-sm"
+                  type="button" data-full="assets/img/projects/teknisi-baik-form-order.webp"
+                  data-title="Form Permintaan Perbaikan">
+                  <div class="aspect-video bg-[#F3ECE2] dark:bg-[#292522] overflow-hidden">
+                    <img src="assets/img/projects/teknisi-baik-form-order-thumb.webp" alt="Form permintaan perbaikan"
+                      loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                  </div>
+                  <div class="p-3 bg-white dark:bg-[#211E1B] flex items-center justify-between text-xs border-t border-[#E6DCD1] dark:border-[#38322D]">
+                    <span class="font-mono text-[#241C18] dark:text-[#F2EBE3] font-bold">Frame_15</span>
+                    <span class="text-[#241C18] dark:text-[#F2EBE3] font-medium">Form Order</span>
+                  </div>
+                </button>
+
+                <button
+                  class="reel-card w-72 sm:w-80 rounded-2xl overflow-hidden bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] group text-left shadow-sm"
+                  type="button" data-full="assets/img/projects/teknisi-baik-dashboard-teknisi.webp"
+                  data-title="Dashboard Teknisi &amp; Order Masuk">
+                  <div class="aspect-video bg-[#F3ECE2] dark:bg-[#292522] overflow-hidden">
+                    <img src="assets/img/projects/teknisi-baik-dashboard-teknisi-thumb.webp" alt="Dashboard teknisi"
+                      loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                  </div>
+                  <div class="p-3 bg-white dark:bg-[#211E1B] flex items-center justify-between text-xs border-t border-[#E6DCD1] dark:border-[#38322D]">
+                    <span class="font-mono text-[#241C18] dark:text-[#F2EBE3] font-bold">Frame_16</span>
+                    <span class="text-[#241C18] dark:text-[#F2EBE3] font-medium">Dashboard Teknisi</span>
+                  </div>
+                </button>
+
+                <button
+                  class="reel-card w-72 sm:w-80 rounded-2xl overflow-hidden bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] group text-left shadow-sm"
+                  type="button" data-full="assets/img/projects/teknisi-baik-manajemen-tipe.webp"
+                  data-title="Manajemen Tipe Perbaikan">
+                  <div class="aspect-video bg-[#F3ECE2] dark:bg-[#292522] overflow-hidden">
+                    <img src="assets/img/projects/teknisi-baik-manajemen-tipe-thumb.webp" alt="Manajemen tipe perbaikan"
+                      loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                  </div>
+                  <div class="p-3 bg-white dark:bg-[#211E1B] flex items-center justify-between text-xs border-t border-[#E6DCD1] dark:border-[#38322D]">
+                    <span class="font-mono text-[#241C18] dark:text-[#F2EBE3] font-bold">Frame_17</span>
+                    <span class="text-[#241C18] dark:text-[#F2EBE3] font-medium">CRUD Tipe</span>
+                  </div>
+                </button>
+
+                <button
+                  class="reel-card w-72 sm:w-80 rounded-2xl overflow-hidden bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] group text-left shadow-sm"
+                  type="button" data-full="assets/img/projects/teknisi-baik-detail-order.webp"
+                  data-title="Detail Order Teknisi">
+                  <div class="aspect-video bg-[#F3ECE2] dark:bg-[#292522] overflow-hidden">
+                    <img src="assets/img/projects/teknisi-baik-detail-order-thumb.webp" alt="Detail order teknisi"
+                      loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                  </div>
+                  <div class="p-3 bg-white dark:bg-[#211E1B] flex items-center justify-between text-xs border-t border-[#E6DCD1] dark:border-[#38322D]">
+                    <span class="font-mono text-[#241C18] dark:text-[#F2EBE3] font-bold">Frame_18</span>
+                    <span class="text-[#241C18] dark:text-[#F2EBE3] font-medium">Detail Order</span>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== KONTAK SECTION ==================== -->
+    <section class="py-20 border-t border-[#E6DCD1] dark:border-[#38322D] relative bg-[#F5EFE6] dark:bg-[#1B1816]" id="kontak">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+
+        <div class="warm-card p-8 sm:p-14 rounded-3xl border border-[#E6DCD1] dark:border-[#38322D] bg-white dark:bg-[#211E1B] relative overflow-hidden reveal-init shadow-sm">
+          <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center justify-between">
+
+            <div class="lg:col-span-8 space-y-4">
+              <span class="text-xs font-mono text-[#BC5434] dark:text-[#DE6E4E] uppercase tracking-wider block font-semibold">[ TERBUKA UNTUK KOLABORASI ]</span>
+              <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#241C18] dark:text-[#F2EBE3] tracking-tight leading-tight">
+                Mari bangun aplikasi web yang rapi, cepat, &amp; fungsional.
+              </h2>
+              <p class="text-[#5C4D44] dark:text-[#B8AAA0] text-base max-w-xl leading-relaxed">
+                Hubungi saya untuk diskusi kesempatan kerja, perancangan antarmuka UI/UX, atau rekayasa aplikasi web
+                berbasis basis data.
+              </p>
+
+              <!-- Action Buttons -->
+              <div class="flex flex-wrap items-center gap-3 pt-3">
+                <a class="tactile-btn inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold bg-[#BC5434] dark:bg-[#DE6E4E] text-white hover:bg-[#9E3E20] dark:hover:bg-[#C45737] transition-all shadow-sm"
+                  href="mailto:ahmaddavfamaulana@gmail.com?subject=Diskusi%20Proyek%20Website">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                    </path>
+                  </svg>
+                  <span>Email Saya Langsung</span>
+                </a>
+
+                <a class="tactile-btn inline-flex items-center gap-2 px-6 py-3.5 rounded-xl font-bold bg-white dark:bg-[#292522] border border-[#E6DCD1] dark:border-[#38322D] hover:bg-[#FAF6F0] dark:hover:bg-[#352F2A] text-[#241C18] dark:text-[#F2EBE3] transition-all shadow-sm"
+                  href="https://wa.me/6281244594564" target="_blank" rel="noopener">
+                  <svg class="w-5 h-5 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z" />
+                  </svg>
+                  <span>Chat WhatsApp</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Live Status Indicator -->
+            <div class="lg:col-span-4 flex justify-center lg:justify-end">
+              <div class="p-6 rounded-2xl bg-[#FAF6F0] dark:bg-[#161412] border border-[#E6DCD1] dark:border-[#38322D] flex items-center gap-4 shadow-sm">
+                <span class="w-3.5 h-3.5 rounded-full bg-[#BC5434] dark:bg-[#DE6E4E] status-pulse-warm"></span>
+                <div>
+                  <span class="text-xs font-mono text-[#8C7B71] dark:text-[#87796F] block">STATUS OPERASIONAL</span>
+                  <span class="text-[#241C18] dark:text-[#F2EBE3] font-bold text-sm tracking-wide">SIAP BERKOLABORASI</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="border-t border-[#E6DCD1] dark:border-[#38322D] py-8 bg-[#FAF6F0] dark:bg-[#161412] transition-colors duration-300">
+    <div
+      class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm text-[#8C7B71] dark:text-[#87796F] font-mono">
+      <div class="flex items-center gap-2">
+        <span>© <span id="year">2026</span> Ahmad Davfa Maulana</span>
+        <span>•</span>
+        <span class="text-[#BC5434] dark:text-[#DE6E4E]">Tailwind CSS &amp; Vanilla JS</span>
+      </div>
+      <a href="#top" class="hover:text-[#BC5434] dark:hover:text-[#DE6E4E] flex items-center gap-1.5 transition-colors">
+        <span>Kembali ke puncak</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
+        </svg>
+      </a>
+    </div>
+  </footer>
+
+  <!-- ==================== FLOATING BACK TO TOP WITH PROGRESS RING ==================== -->
+  <button id="back-to-top"
+    class="fixed bottom-6 left-6 z-40 p-2.5 rounded-full bg-white dark:bg-[#211E1B] border border-[#E6DCD1] dark:border-[#38322D] text-[#BC5434] dark:text-[#DE6E4E] hover:bg-[#FAF6F0] dark:hover:bg-[#292522] transition-all shadow-md opacity-0 pointer-events-none translate-y-4 focus:outline-none"
+    aria-label="Kembali ke atas">
+    <div class="relative w-10 h-10 flex items-center justify-center">
+      <svg class="w-10 h-10 -rotate-90" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2.5" class="text-[#EFE7DE] dark:text-[#2C2723]">
+        </circle>
+        <circle id="scroll-progress-indicator" cx="20" cy="20" r="18" fill="none" stroke="currentColor"
+          stroke-width="2.5" stroke-dasharray="113.097" stroke-dashoffset="113.097"
+          class="text-[#BC5434] dark:text-[#DE6E4E] transition-all duration-75"></circle>
+      </svg>
+      <svg class="w-4 h-4 absolute text-[#BC5434] dark:text-[#DE6E4E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path>
+      </svg>
+    </div>
+  </button>
+
+  <!-- ==================== MUSEUM LIGHTBOX MODAL ==================== -->
+  <div class="fixed inset-0 z-50 lightbox-overlay hidden items-center justify-center p-4 sm:p-6" id="lightbox"
+    role="dialog" aria-modal="true" aria-label="Pratinjau tangkapan layar" hidden>
+    <!-- Close Button -->
+    <button
+      class="lightbox-close absolute top-5 right-5 p-3 rounded-2xl bg-white/10 hover:bg-white/20 text-white transition-all focus:outline-none z-10"
+      type="button" aria-label="Tutup pratinjau">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
     </button>
 
-    <div class="nav-links" id="mainNav">
-      <a href="#profil">Profil</a>
-      <a href="#pengalaman">Pengalaman</a>
-      <a href="#keahlian">Keahlian</a>
-      <a href="#proyek">Proyek</a>
-      <a href="#kontak">Kontak</a>
-    </div>
-  </nav>
-</header>
-
-<main>
-
-  <!-- ============ HERO / SHEET 00 ============ -->
-  <section class="hero section" id="beranda">
-    <div class="container">
-      <div class="hero-grid">
-        <div class="hero-copy reveal">
-          <p class="sheet-label">My Portofolio</p>
-          <p class="terminal-line"><span class="cursor" aria-hidden="true"></span></p>
-          <h1>Ahmad Davfa Maulana</h1>
-          <span class="hero-role">Junior Web Programmer &amp; UI/UX Designer</span>
-
-          <p class="hero-lead">
-            Menggabungkan logika pemrograman yang solid dengan perhatian terhadap estetika,
-            agar aplikasi web yang dibangun responsif, mudah dipahami, dan didesain dengan
-            fokus pada pengguna.
-          </p>
-
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#proyek">Lihat Studi Kasus</a>
-            <a class="btn" href="assets/docs/Ahmad-Davfa-Maulana-CV.pdf" download="CV-Ahmad-Davfa-Maulana.pdf">Unduh CV</a>
-          </div>
-
-          <dl class="title-block">
-            <div>
-              <dt>Nama</dt>
-              <dd>Ahmad Davfa Maulana</dd>
-            </div>
-            <div>
-              <dt>Domisili</dt>
-              <dd>Depok, Jawa Barat</dd>
-            </div>
-            <div>
-              <dt>Pendidikan</dt>
-              <dd>S1 Informatika — 2025</dd>
-            </div>
-            <div>
-              <dt>Sertifikasi</dt>
-              <dd>LSP Junior Web Programmer</dd>
-            </div>
-          </dl>
+    <div class="max-w-5xl w-full flex flex-col items-center gap-4">
+      <figure class="w-full flex flex-col items-center">
+        <div
+          class="rounded-2xl overflow-hidden border border-white/20 shadow-2xl max-h-[75vh] flex items-center justify-center bg-black/60">
+          <img src="" alt="" class="max-h-[75vh] w-auto max-w-full object-contain">
         </div>
+        <figcaption
+          class="mt-4 text-center text-sm font-medium text-white/90 bg-white/10 px-4 py-2 rounded-xl backdrop-blur-md">
+        </figcaption>
+      </figure>
 
-        <div class="hero-plate reveal">
-          <div class="plate-frame">
-            <picture>
-              <source srcset="assets/img/profile-ahmad-davfa.webp" type="image/webp">
-              <img src="assets/img/profile-ahmad-davfa.png" alt="Foto Ahmad Davfa Maulana" width="411" height="544">
-            </picture>
-            <p class="plate-caption"><span></span><span></span></p>
-          </div>
-        </div>
+      <!-- Navigation Arrows -->
+      <div
+        class="lightbox-bar flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-2 rounded-2xl border border-white/20">
+        <button type="button" data-dir="-1"
+          class="p-2 rounded-xl hover:bg-white/20 text-white transition-all flex items-center gap-1 text-xs font-mono"
+          aria-label="Sebelumnya">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+          </svg>
+          <span>Sebelumnya</span>
+        </button>
+        <span class="text-white/40">|</span>
+        <button type="button" data-dir="1"
+          class="p-2 rounded-xl hover:bg-white/20 text-white transition-all flex items-center gap-1 text-xs font-mono"
+          aria-label="Berikutnya">
+          <span>Berikutnya</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+          </svg>
+        </button>
       </div>
     </div>
-  </section>
-
-  <!-- ============ PROFIL / SHEET 01 ============ -->
-  <section class="section section--alt" id="profil">
-    <div class="container">
-      <div class="section-head">
-        <p class="sheet-label">Profil</p>
-        <h2>Profil</h2>
-      </div>
-
-      <div class="profil-grid">
-        <div class="profil-text reveal">
-          <p>
-            Ahmad Davfa Maulana, lulusan Sarjana Informatika Universitas Gunadarma dengan
-            fokus pada pengembangan web serta desain antarmuka dan pengalaman pengguna
-            (UI/UX).
-          </p>
-          <p>
-            Menggabungkan logika pemrograman yang solid dengan perhatian terhadap estetika,
-            agar aplikasi web yang dibangun responsif, mudah dipahami, dan didesain dengan
-            fokus pada pengguna. Terbiasa menyesuaikan diri dengan teknologi terkini dan siap
-            berpartisipasi dalam menciptakan solusi digital yang kreatif serta inovatif.
-          </p>
-        </div>
-
-        <div class="fact-card reveal">
-          <dl>
-            <div class="fact-row">
-              <dt>Email</dt>
-              <dd><a class="contact-email" href="mailto:davfagaming@gmail.com">davfagaming@gmail.com</a></dd>
-            </div>
-            <div class="fact-row">
-              <dt>Telepon</dt>
-              <dd><a href="tel:+6208124459454">0812-4459-454</a></dd>
-            </div>
-            <div class="fact-row">
-              <dt>Lokasi</dt>
-              <dd>Depok, Jawa Barat 16424</dd>
-            </div>
-            <div class="fact-row">
-              <dt>Pendidikan</dt>
-              <dd>Universitas Gunadarma — S1 Informatika (2021–2025)</dd>
-            </div>
-          </dl>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PENGALAMAN / SHEET 02 ============ -->
-  <section class="section" id="pengalaman">
-    <div class="container">
-      <div class="section-head">
-        <p class="sheet-label">Pengalaman</p>
-        <h2>Riwayat Kerja &amp; Pelatihan</h2>
-        <p class="section-desc">Catatan singkat dua pengalaman yang membentuk cara saya membangun web — dari sisi logika pemrograman maupun sisi desain.</p>
-      </div>
-
-      <div class="log-list">
-        <article class="log-card reveal">
-          <div class="log-meta">
-            <span class="log-year">2025</span>
-            <span class="log-tag">Sertifikasi Okupasi</span>
-          </div>
-          <div class="log-body">
-            <h3>Junior Web Programmer</h3>
-            <span class="log-org">Lembaga Sertifikasi Profesi (LSP)</span>
-            <ul>
-              <li>Membangun dan merancang arsitektur aplikasi web dari dasar (from scratch) menggunakan integrasi penuh HTML5 dan CSS3 untuk memastikan tampilan yang responsif di berbagai perangkat.</li>
-              <li>Mengimplementasikan sistem manajemen basis data menggunakan MySQL serta mengintegrasikan fitur CRUD (Create, Read, Update, Delete) yang fungsional dan aman.</li>
-              <li>Menerapkan logika pemrograman yang efisien guna mengoptimalkan performa web dan memastikan fungsionalitas sistem berjalan sesuai standar kompetensi profesional.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="log-card reveal">
-          <div class="log-meta">
-            <span class="log-year">2024</span>
-            <span class="log-tag">Program Studi</span>
-          </div>
-          <div class="log-body">
-            <h3>Pengembangan Web Application Design</h3>
-            <span class="log-org">Universitas Gunadarma</span>
-            <ul>
-              <li>Mengembangkan purwarupa (prototype) aplikasi interaktif dengan fokus pada optimalisasi fungsionalitas teknis serta estetika visual yang modern.</li>
-              <li>Melakukan user research mendasar untuk menganalisis kebutuhan pengguna guna menghasilkan solusi desain antarmuka (UI) yang lebih intuitif dan solutif.</li>
-            </ul>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ KEAHLIAN / SHEET 03 ============ -->
-  <section class="section section--alt" id="keahlian">
-    <div class="container">
-      <div class="section-head">
-        <p class="sheet-label">Keahlian</p>
-        <h2>Daftar Komponen</h2>
-        <p class="section-desc">Kemampuan teknis dan alat kerja, dikelompokkan seperti daftar komponen — supaya jelas apa yang saya pakai untuk membangun sesuatu.</p>
-      </div>
-
-      <table class="parts-table reveal">
-        <caption>Kemampuan Utama</caption>
-        <thead>
-          <tr><th scope="col">Kategori</th><th scope="col">Komponen</th></tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Pemrograman &amp; Web</th>
-            <td>
-              <div class="tag-row">
-                <span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Golang</span><span>Python</span><span>MySQL</span><span>Sistem CRUD</span><span>Responsive Web Design</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Desain UI/UX</th>
-            <td>
-              <div class="tag-row">
-                <span>UI/UX Design</span><span>Wireframing</span><span>Prototyping</span><span>User Research</span><span>User-Centered Design</span><span>Arsitektur Informasi</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Tools &amp; Teknologi</th>
-            <td>
-              <div class="tag-row">
-                <span>Figma</span><span>Adobe Illustrator</span><span>Git</span><span>GitHub</span><span>Visual Studio Code</span>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <th scope="row">Kompetensi Inti</th>
-            <td>
-              <div class="tag-row">
-                <span>Logika Pemrograman</span><span>Problem Solving</span><span>Kolaborasi Tim (Cross-Functional)</span><span>Analisis Visual</span>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="notes-grid">
-        <div class="note-card reveal">
-          <h3>Problem Solving &amp; Logika Analitis</h3>
-          <p>Kemampuan memecahkan masalah teknis (debugging) secara sistematis dan merancang alur logika program yang efisien.</p>
-        </div>
-        <div class="note-card reveal">
-          <h3>Kolaborasi Tim (Cross-Functional Collaboration)</h3>
-          <p>Mampu menjembatani komunikasi antara kebutuhan desain (UI/UX) dan implementasi teknis (programming) — nilai plus yang jarang dimiliki developer biasa.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ PROYEK / SHEET 04–05 ============ -->
-  <section class="section" id="proyek">
-    <div class="container">
-      <div class="section-head">
-        <p class="sheet-label">Studi Kasus</p>
-        <h2>Proyek Terpilih</h2>
-        <p class="section-desc">Dua proyek yang merepresentasikan dua sisi cara saya bekerja: membangun sistem dari struktur data sampai logikanya, dan merancang antarmuka yang dipakai orang lain.</p>
-      </div>
-
-      <!-- ---- Studi Kasus 01: Sistem Admin Pembelian & Stock Toko ---- -->
-      <div class="case-study">
-        <p class="sheet-label">Studi Kasus 1</p>
-        <h3 class="case-title reveal">Sistem Admin Pembelian &amp; Stock Toko</h3>
-
-        <div class="case-intro reveal">
-          <div>
-            <h4>Dashboard internal dengan chatbot AI yang membaca kondisi stock secara langsung</h4>
-            <p>
-              Aplikasi internal untuk mencatat pembelian (restock) barang dari supplier,
-              membatalkan transaksi yang salah input, dan memantau stock — semuanya dari satu
-              dashboard. Dilengkapi asisten chatbot yang terhubung ke API AI (OpenAI, Gemini,
-              DeepSeek, atau Ollama) dan otomatis diberi konteks data stock terkini, sehingga
-              bisa menjawab pertanyaan seperti "produk apa yang stocknya menipis?" sesuai data
-              toko yang sebenarnya, bukan jawaban generik.
-            </p>
-          </div>
-          <div class="case-stack">
-            <dl>
-              <dt>Dibangun dengan</dt>
-              <dd class="tag-row">
-                <span>Node.js</span><span>Express</span><span>EJS</span><span>SQLite</span><span>REST API</span><span>AI Multi-Provider</span>
-              </dd>
-            </dl>
-          </div>
-        </div>
-
-        <div class="flow-grid">
-          <article class="flow-card reveal">
-            <span>Alur 01</span>
-            <h4>Dashboard Ringkasan</h4>
-            <p>Total produk, total stock, nilai pembelian aktif, dan stock menipis dalam satu tampilan.</p>
-          </article>
-          <article class="flow-card reveal">
-            <span>Alur 02</span>
-            <h4>Input &amp; Batalkan Pembelian</h4>
-            <p>Stock bertambah otomatis saat pembelian disimpan, dikembalikan otomatis saat dibatalkan.</p>
-          </article>
-          <article class="flow-card reveal">
-            <span>Alur 03</span>
-            <h4>Pemantauan Stock</h4>
-            <p>Status "Aman" / "Menipis" otomatis berdasarkan batas minimum tiap produk.</p>
-          </article>
-          <article class="flow-card reveal">
-            <span>Alur 04</span>
-            <h4>Chatbot Asisten AI</h4>
-            <p>Tanya-jawab seputar stock, dijawab dengan konteks data toko yang sebenarnya.</p>
-          </article>
-        </div>
-
-        <div class="reel-wrap reveal">
-          <div class="reel-hint">
-            <span>Geser untuk lihat tangkapan layar lainnya</span>
-            <span class="reel-arrows">
-              <button type="button" data-dir="-1" aria-label="Sebelumnya">‹</button>
-              <button type="button" data-dir="1" aria-label="Berikutnya">›</button>
-            </span>
-          </div>
-
-          <div class="reel">
-            <button class="reel-item" type="button" data-full="assets/img/projects/admintoko-dashboard.webp" data-title="Dashboard Admin Toko">
-              <img src="assets/img/projects/admintoko-dashboard-thumb.webp" alt="Dashboard admin toko" loading="lazy">
-              <figcaption><b>Frame_02</b><span>Dashboard</span></figcaption>
-            </button>
-            <button class="reel-item" type="button" data-full="assets/img/projects/admintoko-pembelian.webp" data-title="Data Pembelian">
-              <img src="assets/img/projects/admintoko-pembelian-thumb.webp" alt="Data pembelian" loading="lazy">
-              <figcaption><b>Frame_03</b><span>Data Pembelian</span></figcaption>
-            </button>
-            <button class="reel-item" type="button" data-full="assets/img/projects/admintoko-stock.webp" data-title="Stock Produk">
-              <img src="assets/img/projects/admintoko-stock-thumb.webp" alt="Stock produk" loading="lazy">
-              <figcaption><b>Frame_04</b><span>Stock Produk</span></figcaption>
-            </button>
-            <button class="reel-item" type="button" data-full="assets/img/projects/admintoko-chatbot.webp" data-title="Chatbot Asisten Toko">
-              <img src="assets/img/projects/admintoko-chatbot-thumb.webp" alt="Chatbot asisten toko" loading="lazy">
-              <figcaption><b>Frame_05</b><span>Chatbot AI</span></figcaption>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- ---- Studi Kasus 02: Teknisi Baik ---- -->
-      <div class="case-study">
-        <p class="sheet-label">Studi Kasus 2</p>
-        <h3 class="case-title reveal">Teknisi Baik</h3>
-
-        <div class="case-intro reveal">
-          <div>
-            <h4>Tugas akhir mata kuliah Web Programming — dikerjakan berkelompok (5 anggota)</h4>
-            <p>
-              Platform yang mempertemukan pelanggan dengan teknisi untuk perbaikan kendaraan,
-              elektronik, dan peralatan rumah tangga. Pelanggan memilih jenis layanan dan
-              mengisi form order; teknisi menerima, mengerjakan, atau membatalkan order dari
-              dashboard masing-masing. Tipe perbaikan, harga, dan ikon layanan dikelola lewat
-              sistem CRUD penuh. Kontribusi saya di tim difokuskan pada riset pengguna dan
-              rancangan purwarupa antarmuka (UI).
-            </p>
-          </div>
-          <div class="case-stack">
-            <dl>
-              <dt>Dibangun dengan</dt>
-              <dd class="tag-row">
-                <span>PHP</span><span>MySQL</span><span>HTML</span><span>CSS</span><span>Bootstrap</span><span>CRUD</span><span>Auth</span><span>Role User</span>
-              </dd>
-            </dl>
-          </div>
-        </div>
-
-        <div class="flow-grid">
-          <article class="flow-card reveal">
-            <span>Alur 01</span>
-            <h4>Landing Page</h4>
-            <p>Halaman pengenalan layanan dengan navbar, hero, dan tentang kami.</p>
-          </article>
-          <article class="flow-card reveal">
-            <span>Alur 02</span>
-            <h4>Pilih Layanan &amp; Order</h4>
-            <p>Pelanggan memilih jenis perbaikan dan mengisi form permintaan.</p>
-          </article>
-          <article class="flow-card reveal">
-            <span>Alur 03</span>
-            <h4>Dashboard Teknisi</h4>
-            <p>Teknisi melihat, mengambil, menyelesaikan, atau membatalkan order.</p>
-          </article>
-          <article class="flow-card reveal">
-            <span>Alur 04</span>
-            <h4>CRUD Tipe Perbaikan</h4>
-            <p>Mengelola tipe perbaikan, harga, dan ikon layanan yang tersedia.</p>
-          </article>
-        </div>
-
-        <div class="reel-wrap reveal">
-          <div class="reel-hint">
-            <span>Geser untuk lihat tangkapan layar lainnya</span>
-            <span class="reel-arrows">
-              <button type="button" data-dir="-1" aria-label="Sebelumnya">‹</button>
-              <button type="button" data-dir="1" aria-label="Berikutnya">›</button>
-            </span>
-          </div>
-
-          <div class="reel">
-            <button class="reel-item" type="button" data-full="assets/img/projects/teknisi-baik-landing.webp" data-title="Landing Page Teknisi Baik">
-              <img src="assets/img/projects/teknisi-baik-landing-thumb.webp" alt="Landing page Teknisi Baik" loading="lazy">
-              <figcaption><b>Frame_06</b><span>Landing Page</span></figcaption>
-            </button>
-            <button class="reel-item" type="button" data-full="assets/img/projects/teknisi-baik-pilih-layanan.webp" data-title="Pemilihan Jenis Perbaikan">
-              <img src="assets/img/projects/teknisi-baik-pilih-layanan-thumb.webp" alt="Halaman pilih jenis perbaikan" loading="lazy">
-              <figcaption><b>Frame_07</b><span>Pilih Layanan</span></figcaption>
-            </button>
-            <button class="reel-item" type="button" data-full="assets/img/projects/teknisi-baik-form-order.webp" data-title="Form Permintaan Perbaikan">
-              <img src="assets/img/projects/teknisi-baik-form-order-thumb.webp" alt="Form permintaan perbaikan" loading="lazy">
-              <figcaption><b>Frame_08</b><span>Form Order</span></figcaption>
-            </button>
-            <button class="reel-item" type="button" data-full="assets/img/projects/teknisi-baik-dashboard-teknisi.webp" data-title="Dashboard Teknisi & Order Masuk">
-              <img src="assets/img/projects/teknisi-baik-dashboard-teknisi-thumb.webp" alt="Dashboard teknisi" loading="lazy">
-              <figcaption><b>Frame_09</b><span>Dashboard</span></figcaption>
-            </button>
-            <button class="reel-item" type="button" data-full="assets/img/projects/teknisi-baik-manajemen-tipe.webp" data-title="Manajemen Tipe Perbaikan">
-              <img src="assets/img/projects/teknisi-baik-manajemen-tipe-thumb.webp" alt="Manajemen tipe perbaikan" loading="lazy">
-              <figcaption><b>Frame_10</b><span>CRUD Tipe</span></figcaption>
-            </button>
-            <button class="reel-item" type="button" data-full="assets/img/projects/teknisi-baik-detail-order.webp" data-title="Detail Order Teknisi">
-              <img src="assets/img/projects/teknisi-baik-detail-order-thumb.webp" alt="Detail order teknisi" loading="lazy">
-              <figcaption><b>Frame_11</b><span>Detail Order</span></figcaption>
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ KONTAK / SHEET 06 ============ -->
-  <section class="section section--alt" id="kontak">
-    <div class="container">
-      <p class="sheet-label">Kontak</p>
-
-      <div class="contact-card reveal">
-        <div>
-          <h2>Mari bangun sesuatu yang rapi &amp; berfungsi.</h2>
-          <p>Hubungi saya untuk diskusi proyek web, UI/UX, atau pengembangan aplikasi berbasis basis data.</p>
-          <div class="contact-actions">
-            <a class="btn btn-primary" href="mailto:davfagaming@gmail.com?subject=Diskusi%20Proyek%20Website">Email Saya</a>
-            <a class="btn" href="https://wa.me/628124459454" target="_blank" rel="noopener">WhatsApp</a>
-          </div>
-        </div>
-        <div class="status-panel" aria-hidden="true">
-          <span class="status-led"></span>
-          <span class="status-text">STATUS<br>ONLINE</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="footer">
-  <div class="container footer-inner">
-    <p>© <span id="year"></span> Ahmad Davfa Maulana — dibuat dengan HTML, CSS &amp; JavaScript murni.</p>
-    <a href="#top">Kembali ke atas ↑</a>
   </div>
-</footer>
 
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Pratinjau tangkapan layar" hidden>
-  <button class="lightbox-close" type="button" aria-label="Tutup">×</button>
-  <figure>
-    <img src="" alt="">
-    <figcaption></figcaption>
-  </figure>
-  <div class="lightbox-bar">
-    <button type="button" data-dir="-1" aria-label="Sebelumnya">‹</button>
-    <button type="button" data-dir="1" aria-label="Berikutnya">›</button>
-  </div>
-</div>
+  <!-- Toast Container placeholder -->
+  <div id="toast-container"></div>
 
-<script src="assets/js/main.js"></script>
+  <!-- Main Application Script -->
+  <script src="assets/js/main.js?v=2.0"></script>
 </body>
+
 </html>
