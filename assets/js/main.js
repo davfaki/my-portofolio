@@ -195,6 +195,7 @@
      ========================================================= */
   const filterBtns = document.querySelectorAll('[data-filter]');
   const projectCards = document.querySelectorAll('[data-category]');
+  let motionApi = null;
 
   filterBtns?.forEach((btn) => {
     if (!btn) return;
@@ -217,11 +218,29 @@
         if (filterValue === 'all' || cat.includes(filterValue)) {
           card.style.display = 'block';
           card.classList.add('reveal-visible');
+          if (motionApi && !prefersReduced) {
+            motionApi.animate(
+              card,
+              { opacity: [0, 1], y: [18, 0], scale: [0.985, 1] },
+              { duration: 0.45, ease: [0.16, 1, 0.3, 1] }
+            );
+            card.querySelectorAll('.grid > div').forEach((subCard) => {
+              subCard.style.opacity = '1';
+              subCard.style.transform = 'none';
+            });
+          } else {
+            card.style.opacity = '1';
+            card.style.transform = 'none';
+          }
           visibleCount++;
         } else {
           card.style.display = 'none';
         }
       });
+
+      if (typeof window.ScrollTrigger !== 'undefined') {
+        window.ScrollTrigger.refresh();
+      }
 
       const label = btn.textContent ? btn.textContent.trim() : '';
       showToast(`Menampilkan ${visibleCount} studi kasus: ${label}`, 'info', 2200);
@@ -250,7 +269,7 @@
       if (navToggle) {
         navToggle.setAttribute('aria-expanded', 'false');
       }
-      if (window.innerWidth < 768) {
+      if (window.innerWidth < 1024) {
         navLinks?.classList.add('hidden');
         navLinks?.classList.remove('flex');
       }
@@ -258,8 +277,276 @@
   });
 
   /* =========================================================
-     7. SCROLL REVEAL & ACTIVE NAVIGATION
+     7. LENIS SMOOTH SCROLL, GSAP WORD REVEAL & MOTION CARDS
      ========================================================= */
+  let lenis = null;
+  const hasGsap = typeof window.gsap !== 'undefined' && typeof window.ScrollTrigger !== 'undefined';
+  const hasLenis = typeof window.Lenis !== 'undefined';
+
+  if (hasGsap) {
+    window.gsap.registerPlugin(window.ScrollTrigger);
+  }
+
+  if (!prefersReduced && hasLenis) {
+    lenis = new window.Lenis({
+      duration: 1.15,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      touchMultiplier: 1.5,
+    });
+
+    if (hasGsap) {
+      lenis.on('scroll', window.ScrollTrigger.update);
+      window.gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+      });
+      window.gsap.ticker.lagSmoothing(0);
+    } else {
+      const rafLoop = (time) => {
+        lenis.raf(time);
+        requestAnimationFrame(rafLoop);
+      };
+      requestAnimationFrame(rafLoop);
+    }
+  }
+
+  // Smooth anchor navigation via Lenis
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener('click', (e) => {
+      const href = anchor.getAttribute('href');
+      if (!href || href === '#') return;
+      const targetEl = document.querySelector(href);
+      if (!targetEl) return;
+
+      e.preventDefault();
+      if (lenis) {
+        lenis.scrollTo(href === '#top' ? 0 : targetEl, {
+          offset: href === '#top' ? 0 : -80,
+          duration: 1.15,
+        });
+      } else {
+        targetEl.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth' });
+      }
+    });
+  });
+
+  // GSAP + ScrollTrigger: Word-by-word heading reveal
+  const splitHeadingIntoWords = (headingEl) => {
+    const normalized = (headingEl.textContent || '').replace(/\s+/g, ' ').trim();
+    if (!normalized) return [];
+
+    headingEl.setAttribute('aria-label', normalized);
+    const words = normalized.split(' ');
+    const fragment = document.createDocumentFragment();
+    const inners = [];
+
+    words.forEach((word, index) => {
+      const mask = document.createElement('span');
+      mask.className = 'gsap-word-mask';
+      mask.setAttribute('aria-hidden', 'true');
+
+      const inner = document.createElement('span');
+      inner.className = 'gsap-word-inner';
+      inner.textContent = word;
+
+      mask.appendChild(inner);
+      fragment.appendChild(mask);
+      inners.push(inner);
+
+      if (index < words.length - 1) {
+        fragment.appendChild(document.createTextNode(' '));
+      }
+    });
+
+    headingEl.replaceChildren(fragment);
+    return inners;
+  };
+
+  if (!prefersReduced && hasGsap) {
+    const headings = document.querySelectorAll('main section h1, main section h2, #pengalaman h3, main article h3');
+    headings.forEach((heading) => {
+      const wordInners = splitHeadingIntoWords(heading);
+      if (!wordInners.length) return;
+      const isHeroHeading = Boolean(heading.closest('#beranda'));
+
+      window.gsap.fromTo(
+        wordInners,
+        { yPercent: 112, opacity: 0 },
+        {
+          yPercent: 0,
+          opacity: 1,
+          duration: 0.72,
+          ease: 'power3.out',
+          stagger: 0.065,
+          clearProps: 'transform,willChange',
+          scrollTrigger: {
+            trigger: heading,
+            start: isHeroHeading ? 'top 96%' : 'top 88%',
+            once: true,
+          },
+        }
+      );
+    });
+
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => {
+        window.ScrollTrigger.refresh();
+      });
+    }
+  }
+
+  // Motion: Card entrance & tactile hover animations
+  const initMotionCards = async () => {
+    if (prefersReduced) return;
+
+    try {
+      const { animate, inView, hover, stagger } = await import('https://cdn.jsdelivr.net/npm/motion@latest/+esm');
+      motionApi = { animate, inView, hover, stagger };
+
+      const resetHiddenCards = (cards) => {
+        cards.forEach((card) => {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(24px) scale(0.985)';
+        });
+      };
+
+      const bindMediumHover = (cards) => {
+        cards.forEach((card) => {
+          hover(card, (el) => {
+            animate(
+              el,
+              { y: -5, scale: 1.015 },
+              { type: 'spring', stiffness: 360, damping: 24 }
+            );
+            return () => {
+              animate(
+                el,
+                { y: 0, scale: 1 },
+                { type: 'spring', stiffness: 360, damping: 26 }
+              );
+            };
+          });
+        });
+      };
+
+      const bindSubtleHover = (cards) => {
+        cards.forEach((card) => {
+          hover(card, (el) => {
+            animate(
+              el,
+              { y: -3 },
+              { type: 'spring', stiffness: 320, damping: 26 }
+            );
+            return () => {
+              animate(
+                el,
+                { y: 0 },
+                { type: 'spring', stiffness: 320, damping: 28 }
+              );
+            };
+          });
+        });
+      };
+
+      // 1. Grouped card grids (staggered entrance + spring hover)
+      const groupedGridSelectors = [
+        '#beranda .grid.grid-cols-2',
+        '#pengalaman .grid.grid-cols-1',
+        '#keahlian .space-y-6',
+        '#keahlian .grid.grid-cols-1',
+        '#proyek article .grid.grid-cols-1',
+      ];
+
+      groupedGridSelectors.forEach((selector) => {
+        document.querySelectorAll(selector).forEach((grid) => {
+          const items = [...grid.children].filter((el) => el instanceof HTMLElement);
+          if (!items.length) return;
+
+          resetHiddenCards(items);
+          bindMediumHover(items);
+
+          inView(
+            grid,
+            () => {
+              animate(
+                items,
+                { opacity: [0, 1], y: [24, 0], scale: [0.985, 1] },
+                {
+                  duration: 0.65,
+                  delay: stagger(0.08),
+                  ease: [0.16, 1, 0.3, 1],
+                }
+              );
+            },
+            { amount: 0.1 }
+          );
+        });
+      });
+
+      // 2. Standalone medium cards (Hero photo dossier + Profil cards)
+      const standaloneMediumCards = [
+        ...document.querySelectorAll('#beranda .warm-card, #profil .warm-card'),
+      ];
+      resetHiddenCards(standaloneMediumCards);
+      bindMediumHover(standaloneMediumCards);
+
+      standaloneMediumCards.forEach((card, idx) => {
+        inView(
+          card,
+          () => {
+            animate(
+              card,
+              { opacity: [0, 1], y: [24, 0], scale: [0.985, 1] },
+              {
+                duration: 0.68,
+                delay: idx === 0 ? 0.1 : 0.06,
+                ease: [0.16, 1, 0.3, 1],
+              }
+            );
+          },
+          { amount: 0.12 }
+        );
+      });
+
+      // 3. Large container cards (Project case study articles & Kontak card)
+      const largeCards = [
+        ...document.querySelectorAll('#proyek article.warm-card, #kontak .warm-card'),
+      ];
+      resetHiddenCards(largeCards);
+      bindSubtleHover(largeCards);
+
+      largeCards.forEach((card) => {
+        inView(
+          card,
+          () => {
+            animate(
+              card,
+              { opacity: [0, 1], y: [28, 0], scale: [0.99, 1] },
+              {
+                duration: 0.72,
+                ease: [0.16, 1, 0.3, 1],
+              }
+            );
+          },
+          { amount: 0.06 }
+        );
+      });
+
+      // 4. Screenshot reel cards (spring hover)
+      const reelCardNodes = [...document.querySelectorAll('.reel-card')];
+      bindMediumHover(reelCardNodes);
+    } catch (err) {
+      // Fallback: ensure cards remain visible if Motion CDN fails
+      document.querySelectorAll('.warm-card, #beranda .grid > div, #proyek article .grid > div').forEach((el) => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+    }
+  };
+
+  initMotionCards();
+
+  // Legacy .reveal-init fallback (if any remain)
   const revealElements = document.querySelectorAll('.reveal-init');
   if (!prefersReduced && 'IntersectionObserver' in window) {
     const revealObserver = new IntersectionObserver((entries) => {
@@ -276,13 +563,14 @@
     revealElements?.forEach((el) => el.classList.add('reveal-visible'));
   }
 
-  // Active section spy
+  // Active section spy (desktop + mobile nav links)
+  const allNavLinks = [...document.querySelectorAll('header nav a, .nav-links a')];
   if ('IntersectionObserver' in window) {
     const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         const id = entry.target.getAttribute('id');
-        navAnchors?.forEach((anchor) => {
+        allNavLinks?.forEach((anchor) => {
           if (!anchor) return;
           const isActive = anchor.getAttribute('href') === `#${id}`;
           anchor.classList.toggle('text-[#BC5434]', isActive);
@@ -351,6 +639,7 @@
     lightbox.classList.remove('hidden');
     lightbox.classList.add('flex');
     document.body.classList.add('overflow-hidden');
+    if (lenis) lenis.stop();
     if (lightboxClose) lightboxClose.focus();
     showToast(`Pratinjau gambar: ${reelCards[activeIndex].dataset.title || ''}`, 'info', 1800);
   };
@@ -361,6 +650,7 @@
     lightbox.classList.add('hidden');
     lightbox.classList.remove('flex');
     document.body.classList.remove('overflow-hidden');
+    if (lenis) lenis.start();
     if (lightboxImage) lightboxImage.src = '';
   };
 
@@ -426,7 +716,11 @@
   }, { passive: true });
 
   backToTopBtn?.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (lenis) {
+      lenis.scrollTo(0, { duration: 1.15 });
+    } else {
+      window.scrollTo({ top: 0, behavior: prefersReduced ? 'auto' : 'smooth' });
+    }
     showToast('Kembali ke puncak halaman', 'info', 1600);
   });
 

@@ -85,7 +85,6 @@ html.dark {
    BASE TYPOGRAPHY & SMOOTH SCROLLING
    ========================================================= */
 html {
-  scroll-behavior: smooth;
   scroll-padding-top: 5.5rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -164,15 +163,13 @@ html.dark ::-webkit-scrollbar-thumb {
   background: var(--bg-surface);
   border: 1px solid var(--border-warm);
   box-shadow: var(--inner-glow), var(--shadow-warm-sm);
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
-              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+  transition: box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
               border-color 0.25s cubic-bezier(0.16, 1, 0.3, 1),
               background-color 0.35s ease;
 }
 
 .warm-card-hover:hover {
   border-color: var(--accent-terra);
-  transform: translateY(-2px);
   box-shadow: var(--inner-glow), var(--shadow-warm-md);
 }
 
@@ -227,6 +224,20 @@ html.dark .status-pulse-warm {
   animation: warm-pulse-dark 2.2s infinite ease-in-out;
 }
 
+/* GSAP ScrollTrigger Word-by-Word Title Masks */
+.gsap-word-mask {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding-block: 0.08em;
+  margin-block: -0.08em;
+}
+
+.gsap-word-inner {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
 /* Scroll Reveal Animations */
 .reveal-init {
   opacity: 0;
@@ -264,10 +275,9 @@ html.dark .status-pulse-warm {
   scroll-snap-align: start;
   flex-shrink: 0;
   cursor: pointer;
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 .reel-card:hover {
-  transform: translateY(-3px);
   border-color: var(--accent-terra);
   box-shadow: var(--shadow-warm-md);
 }
