@@ -287,26 +287,37 @@
     window.gsap.registerPlugin(window.ScrollTrigger);
   }
 
+  // 1. Lenis Smooth Scroll Setup
   if (!prefersReduced && hasLenis) {
-    lenis = new window.Lenis({
-      duration: 1.15,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      smoothWheel: true,
-      touchMultiplier: 1.5,
-    });
-
-    if (hasGsap) {
-      lenis.on('scroll', window.ScrollTrigger.update);
-      window.gsap.ticker.add((time) => {
-        lenis.raf(time * 1000);
+    try {
+      lenis = new window.Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+        wheelMultiplier: 1,
+        touchMultiplier: 1.3,
+        infinite: false,
       });
-      window.gsap.ticker.lagSmoothing(0);
-    } else {
-      const rafLoop = (time) => {
-        lenis.raf(time);
+
+      window.lenis = lenis;
+
+      if (hasGsap) {
+        lenis.on('scroll', window.ScrollTrigger.update);
+        window.gsap.ticker.add((time) => {
+          lenis.raf(time * 1000);
+        });
+        window.gsap.ticker.lagSmoothing(0);
+      } else {
+        const rafLoop = (time) => {
+          lenis.raf(time);
+          requestAnimationFrame(rafLoop);
+        };
         requestAnimationFrame(rafLoop);
-      };
-      requestAnimationFrame(rafLoop);
+      }
+    } catch (e) {
+      console.warn('Lenis smooth scroll failed to initialize:', e);
     }
   }
 
@@ -315,14 +326,14 @@
     anchor.addEventListener('click', (e) => {
       const href = anchor.getAttribute('href');
       if (!href || href === '#') return;
-      const targetEl = document.querySelector(href);
-      if (!targetEl) return;
+      const targetEl = href === '#top' ? document.body : document.querySelector(href);
+      if (!targetEl && href !== '#top') return;
 
       e.preventDefault();
       if (lenis) {
         lenis.scrollTo(href === '#top' ? 0 : targetEl, {
           offset: href === '#top' ? 0 : -80,
-          duration: 1.15,
+          duration: 1.2,
         });
       } else {
         targetEl.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth' });
@@ -330,40 +341,76 @@
     });
   });
 
-  // GSAP + ScrollTrigger: Word-by-word heading reveal
+  // 2. GSAP + ScrollTrigger: Word-by-word heading reveal on scroll
   const splitHeadingIntoWords = (headingEl) => {
-    const normalized = (headingEl.textContent || '').replace(/\s+/g, ' ').trim();
-    if (!normalized) return [];
+    if (!headingEl || headingEl.dataset.wordsSplit === 'true') return [];
+    headingEl.dataset.wordsSplit = 'true';
 
-    headingEl.setAttribute('aria-label', normalized);
-    const words = normalized.split(' ');
-    const fragment = document.createDocumentFragment();
+    const fullText = (headingEl.textContent || '').replace(/\s+/g, ' ').trim();
+    if (!fullText) return [];
+    headingEl.setAttribute('aria-label', fullText);
+
     const inners = [];
 
-    words.forEach((word, index) => {
-      const mask = document.createElement('span');
-      mask.className = 'gsap-word-mask';
-      mask.setAttribute('aria-hidden', 'true');
+    const processNode = (node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const text = node.textContent;
+        if (!text) return null;
+        const parts = text.split(/(\s+)/);
+        const frag = document.createDocumentFragment();
 
-      const inner = document.createElement('span');
-      inner.className = 'gsap-word-inner';
-      inner.textContent = word;
+        parts.forEach((part) => {
+          if (!part) return;
+          if (/^\s+$/.test(part)) {
+            frag.appendChild(document.createTextNode(part));
+          } else {
+            const mask = document.createElement('span');
+            mask.className = 'gsap-word-mask';
+            mask.setAttribute('aria-hidden', 'true');
 
-      mask.appendChild(inner);
-      fragment.appendChild(mask);
-      inners.push(inner);
+            const inner = document.createElement('span');
+            inner.className = 'gsap-word-inner';
+            inner.textContent = part;
 
-      if (index < words.length - 1) {
-        fragment.appendChild(document.createTextNode(' '));
+            mask.appendChild(inner);
+            frag.appendChild(mask);
+            inners.push(inner);
+          }
+        });
+        return frag;
+      } else if (node.nodeType === Node.ELEMENT_NODE) {
+        if (node.tagName.toLowerCase() === 'svg') {
+          return node;
+        }
+        const clone = node.cloneNode(false);
+        Array.from(node.childNodes).forEach((child) => {
+          const res = processNode(child);
+          if (res) clone.appendChild(res);
+        });
+        return clone;
       }
+      return node.cloneNode(true);
+    };
+
+    const newChildren = [];
+    Array.from(headingEl.childNodes).forEach((child) => {
+      const res = processNode(child);
+      if (res) newChildren.push(res);
     });
 
-    headingEl.replaceChildren(fragment);
+    headingEl.replaceChildren(...newChildren);
     return inners;
   };
 
   if (!prefersReduced && hasGsap) {
-    const headings = document.querySelectorAll('main section h1, main section h2, #pengalaman h3, main article h3');
+    const headingSelectors = [
+      '#beranda h1',
+      'main section h2',
+      '#proyek article h3',
+      '#pengalaman h3',
+    ];
+    const headings = document.querySelectorAll(headingSelectors.join(', '));
+
     headings.forEach((heading) => {
       const wordInners = splitHeadingIntoWords(heading);
       if (!wordInners.length) return;
@@ -371,17 +418,21 @@
 
       window.gsap.fromTo(
         wordInners,
-        { yPercent: 112, opacity: 0 },
+        {
+          yPercent: 120,
+          opacity: 0,
+          rotateX: -20,
+        },
         {
           yPercent: 0,
           opacity: 1,
-          duration: 0.72,
+          rotateX: 0,
+          duration: 0.75,
           ease: 'power3.out',
-          stagger: 0.065,
-          clearProps: 'transform,willChange',
+          stagger: 0.055,
           scrollTrigger: {
             trigger: heading,
-            start: isHeroHeading ? 'top 96%' : 'top 88%',
+            start: isHeroHeading ? 'top 96%' : 'top 85%',
             once: true,
           },
         }
@@ -395,111 +446,103 @@
     }
   }
 
-  // Motion: Card entrance & tactile hover animations
+  // 3. Motion: Card entrance & tactile spring hover animations
   const initMotionCards = async () => {
     if (prefersReduced) return;
 
-    try {
-      const { animate, inView, hover, stagger } = await import('https://cdn.jsdelivr.net/npm/motion@latest/+esm');
-      motionApi = { animate, inView, hover, stagger };
+    let motion = window.Motion;
+    if (!motion) {
+      try {
+        motion = await import('https://cdn.jsdelivr.net/npm/motion@latest/+esm');
+      } catch (err) {
+        console.warn('Motion library could not be loaded:', err);
+      }
+    }
 
-      const resetHiddenCards = (cards) => {
-        cards.forEach((card) => {
-          card.style.opacity = '0';
-          card.style.transform = 'translateY(24px) scale(0.985)';
-        });
-      };
+    if (!motion) {
+      // Graceful fallback: ensure all cards remain visible
+      document.querySelectorAll('.warm-card, #beranda .grid > div, #proyek article .grid > div').forEach((el) => {
+        el.style.opacity = '1';
+        el.style.transform = 'none';
+      });
+      return;
+    }
 
-      const bindMediumHover = (cards) => {
-        cards.forEach((card) => {
-          hover(card, (el) => {
-            animate(
-              el,
-              { y: -5, scale: 1.015 },
-              { type: 'spring', stiffness: 360, damping: 24 }
-            );
-            return () => {
-              animate(
-                el,
-                { y: 0, scale: 1 },
-                { type: 'spring', stiffness: 360, damping: 26 }
-              );
-            };
-          });
-        });
-      };
+    const { animate, inView, hover, stagger } = motion;
+    motionApi = { animate, inView, hover, stagger };
 
-      const bindSubtleHover = (cards) => {
-        cards.forEach((card) => {
-          hover(card, (el) => {
-            animate(
-              el,
-              { y: -3 },
-              { type: 'spring', stiffness: 320, damping: 26 }
-            );
-            return () => {
-              animate(
-                el,
-                { y: 0 },
-                { type: 'spring', stiffness: 320, damping: 28 }
-              );
-            };
-          });
-        });
-      };
+    const resetHiddenCards = (cards) => {
+      cards.forEach((card) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(28px) scale(0.985)';
+      });
+    };
 
-      // 1. Grouped card grids (staggered entrance + spring hover)
-      const groupedGridSelectors = [
-        '#beranda .grid.grid-cols-2',
-        '#pengalaman .grid.grid-cols-1',
-        '#keahlian .space-y-6',
-        '#keahlian .grid.grid-cols-1',
-        '#proyek article .grid.grid-cols-1',
-      ];
-
-      groupedGridSelectors.forEach((selector) => {
-        document.querySelectorAll(selector).forEach((grid) => {
-          const items = [...grid.children].filter((el) => el instanceof HTMLElement);
-          if (!items.length) return;
-
-          resetHiddenCards(items);
-          bindMediumHover(items);
-
-          inView(
-            grid,
-            () => {
-              animate(
-                items,
-                { opacity: [0, 1], y: [24, 0], scale: [0.985, 1] },
-                {
-                  duration: 0.65,
-                  delay: stagger(0.08),
-                  ease: [0.16, 1, 0.3, 1],
-                }
-              );
-            },
-            { amount: 0.1 }
+    const bindMediumHover = (cards) => {
+      cards.forEach((card) => {
+        hover(card, (el) => {
+          animate(
+            el,
+            { y: -6, scale: 1.015 },
+            { type: 'spring', stiffness: 360, damping: 22 }
           );
+          return () => {
+            animate(
+              el,
+              { y: 0, scale: 1 },
+              { type: 'spring', stiffness: 360, damping: 26 }
+            );
+          };
         });
       });
+    };
 
-      // 2. Standalone medium cards (Hero photo dossier + Profil cards)
-      const standaloneMediumCards = [
-        ...document.querySelectorAll('#beranda .warm-card, #profil .warm-card'),
-      ];
-      resetHiddenCards(standaloneMediumCards);
-      bindMediumHover(standaloneMediumCards);
+    const bindSubtleHover = (cards) => {
+      cards.forEach((card) => {
+        hover(card, (el) => {
+          animate(
+            el,
+            { y: -4 },
+            { type: 'spring', stiffness: 320, damping: 25 }
+          );
+          return () => {
+            animate(
+              el,
+              { y: 0 },
+              { type: 'spring', stiffness: 320, damping: 28 }
+            );
+          };
+        });
+      });
+    };
 
-      standaloneMediumCards.forEach((card, idx) => {
+    // A. Grouped card grids (staggered entrance + tactile hover)
+    const groupedGridSelectors = [
+      '#beranda .grid.grid-cols-2',
+      '#pengalaman .grid.grid-cols-1',
+      '#pengalaman .space-y-6',
+      '#keahlian .space-y-6',
+      '#keahlian .grid.grid-cols-1',
+      '#proyek article .grid',
+    ];
+
+    groupedGridSelectors.forEach((selector) => {
+      document.querySelectorAll(selector).forEach((grid) => {
+        const items = [...grid.children].filter((el) => el instanceof HTMLElement);
+        if (!items.length) return;
+
+        resetHiddenCards(items);
+        bindMediumHover(items);
+
         inView(
-          card,
+          grid,
           () => {
             animate(
-              card,
-              { opacity: [0, 1], y: [24, 0], scale: [0.985, 1] },
+              items,
+              { opacity: [0, 1], y: [28, 0], scale: [0.985, 1] },
               {
-                duration: 0.68,
-                delay: idx === 0 ? 0.1 : 0.06,
+                duration: 0.65,
+                delay: stagger(0.08),
                 ease: [0.16, 1, 0.3, 1],
               }
             );
@@ -507,41 +550,60 @@
           { amount: 0.12 }
         );
       });
+    });
 
-      // 3. Large container cards (Project case study articles & Kontak card)
-      const largeCards = [
-        ...document.querySelectorAll('#proyek article.warm-card, #kontak .warm-card'),
-      ];
-      resetHiddenCards(largeCards);
-      bindSubtleHover(largeCards);
+    // B. Standalone & medium cards (Hero photo dossier + Profil cards)
+    const standaloneMediumCards = [
+      ...document.querySelectorAll('#beranda .warm-card, #profil .warm-card'),
+    ];
+    resetHiddenCards(standaloneMediumCards);
+    bindMediumHover(standaloneMediumCards);
 
-      largeCards.forEach((card) => {
-        inView(
-          card,
-          () => {
-            animate(
-              card,
-              { opacity: [0, 1], y: [28, 0], scale: [0.99, 1] },
-              {
-                duration: 0.72,
-                ease: [0.16, 1, 0.3, 1],
-              }
-            );
-          },
-          { amount: 0.06 }
-        );
-      });
+    standaloneMediumCards.forEach((card, idx) => {
+      inView(
+        card,
+        () => {
+          animate(
+            card,
+            { opacity: [0, 1], y: [28, 0], scale: [0.985, 1] },
+            {
+              duration: 0.68,
+              delay: idx === 0 ? 0.08 : 0.04,
+              ease: [0.16, 1, 0.3, 1],
+            }
+          );
+        },
+        { amount: 0.1 }
+      );
+    });
 
-      // 4. Screenshot reel cards (spring hover)
-      const reelCardNodes = [...document.querySelectorAll('.reel-card')];
-      bindMediumHover(reelCardNodes);
-    } catch (err) {
-      // Fallback: ensure cards remain visible if Motion CDN fails
-      document.querySelectorAll('.warm-card, #beranda .grid > div, #proyek article .grid > div').forEach((el) => {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-      });
-    }
+    // C. Large container cards (Project case study articles & Kontak card)
+    const largeCards = [
+      ...document.querySelectorAll('#proyek article.warm-card, #kontak .warm-card'),
+    ];
+    resetHiddenCards(largeCards);
+    bindSubtleHover(largeCards);
+
+    largeCards.forEach((card) => {
+      inView(
+        card,
+        () => {
+          animate(
+            card,
+            { opacity: [0, 1], y: [32, 0], scale: [0.99, 1] },
+            {
+              duration: 0.72,
+              ease: [0.16, 1, 0.3, 1],
+            }
+          );
+        },
+        { amount: 0.08 }
+      );
+    });
+
+    // D. Screenshot reel cards (spring hover)
+    const reelCardNodes = [...document.querySelectorAll('.reel-card')];
+    bindMediumHover(reelCardNodes);
   };
 
   initMotionCards();

@@ -229,13 +229,32 @@ html.dark .status-pulse-warm {
   display: inline-block;
   overflow: hidden;
   vertical-align: bottom;
-  padding-block: 0.08em;
-  margin-block: -0.08em;
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+  perspective: 800px;
 }
 
 .gsap-word-inner {
   display: inline-block;
   will-change: transform, opacity;
+  transform-origin: bottom center;
+}
+
+/* Lenis Smooth Scroll Configuration */
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
 }
 
 /* Scroll Reveal Animations */
